@@ -28,8 +28,6 @@ Note: `npm` can be used intead of `yarn`
 
 
 ### TODO
-[ ] Create an UI lib
- 
-[ ] Clean dist files. Example: since type files are note used for UserScripts, no need for them
-
-[ ] Better project configuration (for typescript, eslint, etc)
+- [ ] Create an UI lib
+- [ ] Clean dist files. Example: since type files are note used for UserScripts, no need for them
+- [ ] Better project configuration (for typescript, eslint, etc)
