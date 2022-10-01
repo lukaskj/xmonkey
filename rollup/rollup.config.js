@@ -11,7 +11,7 @@ export default {
   input: "src/index.ts",
   output: {
     name: "xscript",
-    dir: "dist",
+    file: "dist/index.user.js",
     format: "iife",
     sourcemap: "inline",
     banner: xMonkeyBuildHeaders(),

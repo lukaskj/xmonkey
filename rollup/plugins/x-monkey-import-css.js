@@ -15,7 +15,7 @@ export function xMonkeyImportCss(_options = {}) {
       }
       if (allStylesContent.length > 0) {
         GM_addStyle = `GM.addStyle(\`\n${allStylesContent.trim()}\n\`);`;
-        bundle["index.js"].code += `\n${GM_addStyle} \n\n`;
+        bundle["index.user.js"].code += `\n${GM_addStyle} \n\n`;
       }
     },
   };
