@@ -1,3 +1,10 @@
-.example-wrapper {
-  color: blue;
+.enis {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 255, 0.425);
+}
+
+.enis .btn-enis {
+  color: red;
 }

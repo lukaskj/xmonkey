@@ -7,7 +7,8 @@
   "scripts": {
     "clean": "rimraf dist coverage .rollup.cache",
     "prebuild": "npm run clean",
-    "build": "rollup -c ./rollup/rollup.config.js",
+    "build": "npm run lint && rollup -c ./rollup/rollup.config.js",
+    "build:fast": "rollup -c ./rollup/rollup.config.js",
     "start": "npm run build && node dist/index.js",
     "start:dev": "ts-node ./src/index.ts",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -16,6 +17,9 @@
     "test:watch": "jest --watch --config ./jest.config.js",
     "test:cov": "jest --coverage --config ./jest.config.js",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand  --config ./jest.config.js"
+  },
+  "dependencies": {
+    "million": "^1.12.6-beta.2"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.5.0",
