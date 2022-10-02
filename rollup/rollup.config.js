@@ -13,7 +13,8 @@ export default {
     name: "xscript",
     file: "dist/index.user.js",
     format: "iife",
-    sourcemap: "inline",
+    // sourcemap: "inline",
+    sourcemap: false,
     banner: xMonkeyBuildHeaders(),
   },
   plugins: [

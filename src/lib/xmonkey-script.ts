@@ -1,5 +1,8 @@
+import { batch, render } from "million";
 import { ExecutableScript } from "./executable-script";
 import { GetState, State } from "./state/types";
+
+const queueRender = batch();
 
 export class XMonkeyScript {
   private static state: State = {};
@@ -19,20 +22,15 @@ export class XMonkeyScript {
       throw new Error("Script object not defined.");
     }
 
-    console.log("renderAndExecuteScriptObject", scriptObject);
-
     XMonkeyScript.userScript = scriptObject;
 
-    if (scriptObject.hasUI) {
-      scriptObject.render();
-    }
-
-    return await scriptObject.execute();
+    await scriptObject.execute();
   }
 
   public static getState<T>(key: string, initialValue: T | null = null): GetState<T> {
     const state = XMonkeyScript.state;
     const script = XMonkeyScript.userScript as ExecutableScript;
+
     if (!(key in state)) {
       state[key] = initialValue;
     }
@@ -41,8 +39,11 @@ export class XMonkeyScript {
       state[key],
       (v: T): T => {
         state[key] = v;
-        if (script.hasUI) {
-          script.render();
+
+        const ui = script.render();
+
+        if (ui) {
+          queueRender(() => render(ExecutableScript.wrapperElement, ui));
         }
         return v;
       },

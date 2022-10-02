@@ -4,7 +4,7 @@ module.exports = {
     "^.+\\.ts?$": "ts-jest",
   },
   testEnvironment: "node",
-  moduleFileExtensions: ["js", "json", "ts"],
+  moduleFileExtensions: ["js", "json", "ts", "tsx"],
   collectCoverage: false,
   coverageDirectory: "<rootDir>/coverage",
   coverageReporters: ["clover", "lcov", "text", "text-summary", "html"],

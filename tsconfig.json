@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "million",
     "outDir": "./dist",
     "module": "CommonJS",
     "target": "es2017",
@@ -23,7 +25,8 @@
     "noImplicitReturns": true /* Report error when not all code paths in function return a value. */,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "strictPropertyInitialization": true
+    "strictPropertyInitialization": true,
+    "noImplicitOverride": true,
   },
   "include": ["src", "test"],
   "exclude": ["node_modules"]

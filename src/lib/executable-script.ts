@@ -2,22 +2,22 @@ import { render, VNode, DOMNode } from "million";
 import { xMonkeyWrapperElement } from "./ui/xmonkey-wrapper-element";
 
 export class ExecutableScript {
-  public hasUI = false;
   public static wrapperElement: HTMLElement;
 
-  public buildUI(): VNode | undefined {
-    return undefined;
+  public render(): VNode | undefined {
+    throw new Error("Not implemented.");
   }
 
-  public async execute(): Promise<void> {
-    throw new Error("Not implemented");
-  }
-
-  public render(): DOMNode {
+  public async execute(): Promise<DOMNode | null> {
     if (!ExecutableScript.wrapperElement) {
       ExecutableScript.wrapperElement = xMonkeyWrapperElement();
     }
 
-    return render(ExecutableScript.wrapperElement, this.buildUI());
+    const ui = this.render();
+
+    if (ui) {
+      return render(ExecutableScript.wrapperElement, ui);
+    }
+    return null;
   }
 }
