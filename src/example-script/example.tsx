@@ -2,6 +2,7 @@ import { VNode } from "million";
 import { ExecutableScript } from "../lib/executable-script";
 import { getState } from "../lib/state/get-state";
 import "./example.css";
+import { Example2Component } from "./example2";
 
 export class ExampleScript extends ExecutableScript {
   public override render(): VNode | undefined {
@@ -13,7 +14,7 @@ export class ExampleScript extends ExecutableScript {
     }
 
     return (
-      <div className="example-script-wrapper">
+      <div className="example-script-wrapper d--f fd--c ai--c jc--sb">
         <input
           type="text"
           name="input-name"
@@ -22,6 +23,7 @@ export class ExampleScript extends ExecutableScript {
             setText((e.currentTarget as HTMLInputElement).value);
           }}
         />
+        <Example2Component value={value} />
         <button className="btn-example" onClick={onButtonClick}>
           OK {value}
         </button>

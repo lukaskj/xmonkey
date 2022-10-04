@@ -20,7 +20,7 @@ export default {
   plugins: [
     json(),
     commonjs(),
-    typescript({ module: "esNext", tsconfig: "tsconfig.build.json" }),
+    typescript({ module: "esNext", tsconfig: "tsconfig.build.json", outputToFilesystem: true }),
     resolve(),
     css({
       output: "styles.css",
@@ -35,5 +35,6 @@ export default {
       },
     }),
     xMonkeyImportCss(),
+    xMonkeyFixMillionFunctionalComponents(),
   ],
 };
