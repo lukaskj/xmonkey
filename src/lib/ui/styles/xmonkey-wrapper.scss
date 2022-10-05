@@ -1,0 +1,15 @@
+@use "variables" as vars;
+
+.#{vars.$xmonkey-wrapper} {
+  width: 250px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #ffffff44;
+  border-radius: 7px;
+  z-index: 999999;
+}
+
+#{vars.$xmonkey-wrapper} input {
+  width: 100%;
+}

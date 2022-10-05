@@ -2,6 +2,10 @@
 
 Library to help building scripts for x-monkey extensions (Greasemonkey, Tampermonkey, Violentmonkey, etc) using typescript.
 
+- Simple (and limited) state management;
+- JSX support (Virtual DOM powered by [MillionJS](https://millionjs.org/))
+- Styles (powered by [lit](https://ajusa.github.io/lit/docs/lit.html)) with SCSS support;
+
 ## Usage
 - Install the dependencies (`npm install`);
 - Configuration script is on `script-config.js` file. It contains the `UserScript` metadata that has to be at every `UserScript` file;
@@ -31,3 +35,8 @@ Note: `npm` can be used intead of `yarn`
 - [ ] Create an UI lib
 - [ ] Clean dist files. Example: since type files are note used for UserScripts, no need for them
 - [ ] Better project configuration (for typescript, eslint, etc)
+
+
+
+### Known issues
+- SCSS `@use rules must be written before any other rules` problem;
