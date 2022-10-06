@@ -37,10 +37,27 @@ export class ExampleScript extends ExecutableScript {
           <input type="checkbox" id="__check" />
           <label for="__check">I am not a robot</label>
         </div>
-        <hr />
-        <button class="btn primary" onclick={onButtonClick}>
-          Submit ${value}
-        </button>
+        <hr className="w-100" />
+        <div className="w-100 row">
+          <button class="btn small primary" onclick={onButtonClick}>
+            Primary
+          </button>
+          <button class="btn small secondary" onclick={onButtonClick}>
+            Secondary
+          </button>
+          <button class="btn small success" onclick={onButtonClick}>
+            Success
+          </button>
+          <button class="btn small error" onclick={onButtonClick}>
+            Error
+          </button>
+          <button class="btn small info" onclick={onButtonClick}>
+            Info
+          </button>
+          <button class="btn small" onclick={onButtonClick}>
+            Info
+          </button>
+        </div>
       </div>
     );
   }

@@ -1,36 +1,38 @@
 @use "../variables" as vars;
+@use "../colors";
 /*
 * Lit v0.1
 * Primary Color set to: #FA0
 * Font set to: Nunito
 */
 
-$padding: 0.5em;
-
-:root {
-  --font: nunito;
-  --primary-color: rgb(61, 112, 221);
-  --light: #eee;
-}
+$input-padding: 3px;
 
 .#{vars.$xmonkey-wrapper} {
+  font-family: vars.$font-family;
   * {
     box-sizing: border-box;
+    font-size: 12px;
+    font-family: vars.$font-family;
+    margin: 2.5px 0;
   }
-
-  * + * {
-    margin: 0.5em 0;
-  }
-
   pre {
     overflow: auto;
   }
 
-  @media (min-width: 35em) {
-    .col {
-      display: table-cell;
-    }
+  .col,
+  .row {
+    padding: 0 3px;
+  }
+  .col {
+    flex-direction: column;
+  }
 
+  .row {
+    flex-direction: row;
+  }
+
+  @media (min-width: 35em) {
     .\31 {
       width: 5%;
     }
@@ -54,11 +56,6 @@ $padding: 0.5em;
     .\36 {
       width: 50%;
     }
-
-    .row {
-      display: table;
-      border-spacing: 0.3em 0;
-    }
   }
 
   .w-100,
@@ -69,74 +66,105 @@ $padding: 0.5em;
   .card:focus,
   hr {
     outline: 0;
-    border: solid var(--primary-color);
+    border: solid colors.$primary;
   }
 
   .card,
   pre {
-    padding: $padding;
-    border: solid var(--light);
+    padding: $input-padding;
+    border: solid colors.$white;
   }
 
   a:hover,
   .btn:hover {
-    opacity: 0.6;
+    opacity: 0.8;
   }
 
   .c {
     max-width: 60em;
-    padding: $padding;
+    padding: $input-padding;
     margin: auto;
-    font: 1em/1.6 var(--font);
+    font: 1em/1.6 vars.$font;
   }
 
   h6 {
-    font: 100 1em var(--font);
+    font: 100 1em vars.$font;
   }
 
   h5 {
-    font: 100 1.2em var(--font);
+    font: 100 1.2em vars.$font;
   }
 
   h3 {
-    font: 100 2em var(--font);
+    font: 100 2em vars.$font;
   }
 
   h4 {
-    font: 100 1.5em var(--font);
+    font: 100 1.5em vars.$font;
   }
 
   h2 {
-    font: 100 2.2em var(--font);
+    font: 100 2.2em vars.$font;
   }
 
   h1 {
-    font: 100 2.5em var(--font);
+    font: 100 2.5em vars.$font;
   }
 
   a {
-    color: var(--primary-color);
+    color: colors.$primary;
     text-decoration: none;
-  }
-
-  .btn.primary {
-    color: white;
-    background: var(--primary-color);
-    border: solid var(--primary-color);
   }
 
   td,
   th {
-    padding: $padding;
+    padding: $input-padding;
     text-align: left;
-    border-bottom: solid var(--light);
+    border-bottom: solid colors.$white;
   }
 
   .btn {
-    padding: $padding;
+    padding: $input-padding;
     text-transform: uppercase;
-    background: white;
-    border: solid;
-    font: 0.7em var(--font);
+    background: colors.$white;
+    color: colors.$black;
+    border: solid colors.$white;
+    font: 1em vars.$font;
+
+    &.primary {
+      color: colors.$white;
+      background: colors.$primary;
+      border: solid colors.$primary;
+    }
+
+    &.secondary {
+      color: colors.$white;
+      background: colors.$secondary;
+      border: solid colors.$secondary;
+    }
+
+    &.success {
+      color: colors.$white;
+      background: colors.$success;
+      border: solid colors.$success;
+    }
+
+    &.warning {
+      color: colors.$white;
+      background: colors.$warning;
+      border: solid colors.$warning;
+    }
+
+    &.error {
+      color: colors.$white;
+      background: colors.$error;
+      border: solid colors.$error;
+    }
+
+    &.info {
+      color: colors.$white;
+      background: colors.$info;
+      border: solid colors.$info;
+    }
   }
 }

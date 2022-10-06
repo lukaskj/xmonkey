@@ -1,7 +1,7 @@
 export function xMonkeyWrapperElement(): HTMLDivElement {
   const div = document.createElement("div");
-  div.id = "xmonkey-wrapper";
-  div.classList.add("xmonkey-wrapper");
+  div.id = "__xmwr";
+  div.classList.add("__xmwr");
   div.classList.add("d--f");
   div.classList.add("fd--c");
   div.classList.add("ai--c");

@@ -1,14 +1,5 @@
 @use "../variables" as vars;
-
-:root {
-  --font: nunito;
-  --gray-color: #{vars.$gray-color};
-  --primary-color: #{vars.$primary-color};
-  --warning-color: #{vars.$warning-color};
-  --error-color: #{vars.$error-color};
-  --success-color: #{vars.$success-color};
-  --info-color: #{vars.$info-color};
-}
+@use "../colors";
 
 .#{vars.$xmonkey-wrapper} {
   /*Colors*/
@@ -23,13 +14,13 @@
     border-color: #fff;
   }
   .gray {
-    color: var(--gray-color);
+    color: colors.$gray;
   }
   .bg-gray {
-    background-color: var(--gray-color);
+    background-color: colors.$gray;
   }
   .b-gray {
-    border-color: var(--gray-color);
+    border-color: colors.$gray;
   }
   .black {
     color: #000;
@@ -41,49 +32,49 @@
     border-color: #000;
   }
   .accent {
-    color: var(--primary-color);
+    color: colors.$secondary;
   }
   .bg-accent {
-    background-color: var(--primary-color);
+    background-color: colors.$secondary;
   }
   .b-accent {
-    border-color: var(--primary-color);
+    border-color: colors.$secondary;
   }
   .warning {
-    color: var(--warning-color);
+    color: colors.$warning;
   }
   .bg-warning {
-    background-color: var(--warning-color);
+    background-color: colors.$warning;
   }
   .b-warning {
-    border-color: var(--warning-color);
+    border-color: colors.$warning;
   }
   .error {
-    color: var(--error-color);
+    color: colors.$error;
   }
   .bg-error {
-    background-color: var(--error-color);
+    background-color: colors.$error;
   }
   .b-error {
-    border-color: var(--error-color);
+    border-color: colors.$error;
   }
   .success {
-    color: var(--success-color);
+    color: colors.$success;
   }
   .bg-success {
-    background-color: var(--success-color);
+    background-color: colors.$success;
   }
   .b-success {
-    border-color: var(--success-color);
+    border-color: colors.$success;
   }
   .info {
-    color: var(--info-color);
+    color: colors.$info;
   }
   .bg-info {
-    background-color: var(--info-color);
+    background-color: colors.$info;
   }
   .b-info {
-    border-color: var(--info-color);
+    border-color: colors.$info;
   }
 
   /*Margin+Padding*/
@@ -283,7 +274,7 @@
     font-size: 1.5em;
   }
   .small {
-    font-size: 0.7em;
+    font-size: 0.8em;
   }
   .caps {
     text-transform: uppercase;

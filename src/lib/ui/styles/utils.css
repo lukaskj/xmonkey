@@ -1,8 +1,8 @@
 /* https://gist.github.com/jonsuh/b2347347480105874cda110b2afc53f4 */
 /* Flexbox
 // ================================================== */
-.d--f  { display: flex; }
-.d--if { display: inline-flex; }
+.d--f  { display: flex !important; }
+.d--if { display: inline-flex !important; }
 
 /* Flex direction */
 .fd--r  { flex-direction: row; } /* Default */

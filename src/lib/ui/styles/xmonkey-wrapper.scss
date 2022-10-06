@@ -1,15 +1,29 @@
 @use "variables" as vars;
+@use "colors";
 
 .#{vars.$xmonkey-wrapper} {
   width: 250px;
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color: #ffffff44;
+  background-color: rgba(colors.$bg, .9);
   border-radius: 7px;
   z-index: 999999;
+
+  * {
+    color: colors.$white;
+  }
+
+  input,
+  select, option,
+  textarea {
+    color: colors.$bg;
+    background-color: colors.$white !important;
+  }
+
+  input[type=checkbox] {
+    margin-left: 2px;
+    margin-right: 2px;
+  }
 }
 
-#{vars.$xmonkey-wrapper} input {
-  width: 100%;
-}
