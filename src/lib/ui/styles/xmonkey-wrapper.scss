@@ -7,8 +7,9 @@
   top: 10px;
   left: 10px;
   background-color: rgba(colors.$bg, .9);
-  border-radius: 7px;
+  border-radius: vars.$border-radius;
   z-index: 999999;
+  overflow: hidden;
 
   * {
     color: colors.$white;
@@ -25,9 +26,14 @@
     margin-left: 2px;
     margin-right: 2px;
   }
-}
 
-/* Header */
-.xmwr-h {
-  
+  .#{vars.$xmonkey-container}:has(.#{vars.$xmonkey-header}) {
+    margin-top: 0;
+  }
+
+  .#{vars.$xmonkey-header} {
+    cursor: pointer;
+    // border-top-left-radius: vars.$border-radius;
+    // border-top-right-radius: vars.$border-radius;
+  }
 }
