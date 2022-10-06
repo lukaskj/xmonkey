@@ -1,7 +1,7 @@
 @use "variables" as vars;
 @use "colors";
 
-.#{vars.$xmonkey-wrapper} {
+##{vars.$xmonkey-wrapper} {
   width: 250px;
   position: absolute;
   top: 10px;
@@ -27,3 +27,7 @@
   }
 }
 
+/* Header */
+.xmwr-h {
+  
+}

@@ -1,7 +1,7 @@
-import { render, VNode, DOMNode } from "million";
-import { xMonkeyWrapperElement } from "./ui/xmonkey-wrapper-element";
+import { DOMNode, VNode } from "million";
 
 export class ExecutableScript {
+  public title = "User Script";
   public static wrapperElement: HTMLElement;
 
   public render(): VNode | undefined {
@@ -9,15 +9,6 @@ export class ExecutableScript {
   }
 
   public async execute(): Promise<DOMNode | null> {
-    if (!ExecutableScript.wrapperElement) {
-      ExecutableScript.wrapperElement = xMonkeyWrapperElement();
-    }
-
-    const ui = this.render();
-
-    if (ui) {
-      return render(ExecutableScript.wrapperElement, ui);
-    }
     return null;
   }
 }

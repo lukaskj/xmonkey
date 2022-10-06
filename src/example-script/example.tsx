@@ -38,7 +38,7 @@ export class ExampleScript extends ExecutableScript {
           <label for="__check">I am not a robot</label>
         </div>
         <hr className="w-100" />
-        <div className="w-100 row">
+        <div className="row w-100 d--f jc--c">
           <button class="btn small primary" onclick={onButtonClick}>
             Primary
           </button>

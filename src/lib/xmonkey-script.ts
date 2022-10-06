@@ -1,8 +1,6 @@
-import { batch, render } from "million";
 import { ExecutableScript } from "./executable-script";
 import { GetState, State } from "./state/types";
-
-const queueRender = batch();
+import { renderComponent } from "./ui/render-component";
 
 export class XMonkeyScript {
   private static state: State = {};
@@ -25,26 +23,24 @@ export class XMonkeyScript {
     XMonkeyScript.userScript = scriptObject;
 
     await scriptObject.execute();
+    renderComponent(scriptObject);
   }
 
   public static getState<T>(key: string, initialValue: T | null = null): GetState<T> {
     const state = XMonkeyScript.state;
-    const script = XMonkeyScript.userScript as ExecutableScript;
 
     if (!(key in state)) {
       state[key] = initialValue;
     }
+
+    const script = XMonkeyScript.userScript as ExecutableScript;
 
     return [
       state[key],
       (v: T): T => {
         state[key] = v;
 
-        const ui = script.render();
-
-        if (ui) {
-          queueRender(() => render(ExecutableScript.wrapperElement, ui));
-        }
+        renderComponent(script);
         return v;
       },
     ];

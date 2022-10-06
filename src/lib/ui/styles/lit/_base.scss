@@ -8,7 +8,7 @@
 
 $input-padding: 3px;
 
-.#{vars.$xmonkey-wrapper} {
+##{vars.$xmonkey-wrapper} {
   font-family: vars.$font-family;
   * {
     box-sizing: border-box;
@@ -30,32 +30,7 @@ $input-padding: 3px;
 
   .row {
     flex-direction: row;
-  }
-
-  @media (min-width: 35em) {
-    .\31 {
-      width: 5%;
-    }
-
-    .\33 {
-      width: 22%;
-    }
-
-    .\34 {
-      width: 30%;
-    }
-
-    .\35 {
-      width: 40%;
-    }
-
-    .\32 {
-      width: 15%;
-    }
-
-    .\36 {
-      width: 50%;
-    }
+    flex-wrap: wrap;
   }
 
   .w-100,
@@ -165,6 +140,32 @@ $input-padding: 3px;
       color: colors.$white;
       background: colors.$info;
       border: solid colors.$info;
+    }
+  }
+
+  @media (min-width: 35em) {
+    .\31 {
+      width: 5%;
+    }
+
+    .\33 {
+      width: 22%;
+    }
+
+    .\34 {
+      width: 30%;
+    }
+
+    .\35 {
+      width: 40%;
+    }
+
+    .\32 {
+      width: 15%;
+    }
+
+    .\36 {
+      width: 50%;
     }
   }
 }
