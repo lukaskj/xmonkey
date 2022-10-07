@@ -1,5 +1,5 @@
 import { VNode, VProps } from "million";
-import { getState } from "./state/get-state";
+import { getState } from "./state";
 
 export function XMonkeyComponent(props: VProps): VNode {
   const [minimized, _] = getState("minimized", false);

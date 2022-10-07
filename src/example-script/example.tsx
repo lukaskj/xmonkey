@@ -1,6 +1,6 @@
 import { VNode } from "million";
 import { ExecutableScript } from "../lib/executable-script";
-import { getState } from "../lib/state/get-state";
+import { getState } from "../lib/state";
 import { Example2Component } from "./example2";
 
 import "./example.scss";
