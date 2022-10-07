@@ -1,5 +1,5 @@
-import { State } from "../types";
-import { AbstractPersistentState } from "./abstract-persistent-state";
+import { State } from "../../types";
+import { AbstractPersistentState } from "../abstract-persistent-state";
 
 export class SessionStorageState extends AbstractPersistentState {
   public load(): State {
