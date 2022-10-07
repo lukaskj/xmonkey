@@ -1,0 +1,58 @@
+@use "variables" as vars;
+@use "colors";
+
+##{vars.$xmonkey-wrapper} {
+  width: 250px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(colors.$bg, 0.9);
+  border-radius: vars.$border-radius;
+  z-index: 999999;
+  overflow: hidden;
+
+  * {
+    color: colors.$white;
+  }
+
+  input,
+  select,
+  option,
+  textarea {
+    color: colors.$bg;
+    background-color: colors.$white !important;
+  }
+
+  input[type="checkbox"] {
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  .#{vars.$xmonkey-container} {
+    max-height: 1000px;
+    transition: max-height 70ms;
+    &:has(.b-collapsed) {
+      max-height: 15px;
+    }
+    &:has(.#{vars.$xmonkey-header}) {
+      margin-top: 0;
+    }
+  }
+
+  .#{vars.$xmonkey-header} {
+    height: 15px;
+    // border-top-left-radius: vars.$border-radius;
+    // border-top-right-radius: vars.$border-radius;
+    .xmwr-x {
+      font-family: monospace !important;
+      cursor: pointer;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      font-weight: bold;
+      background-color: colors.$black;
+      padding: 0 5px;
+      height: 15px;
+    }
+  }
+}
