@@ -4,14 +4,20 @@ import { getState } from "../lib/state";
 import { Example2Component } from "./example2";
 
 import "./example.scss";
+import { AnyNullableType } from "../lib/types";
 
 export class ExampleScript extends ExecutableScript {
   public override render(): VNode | undefined {
     const [value, setValue] = getState("value", 0);
-    const [_text, _setText] = getState("text", "");
+    const [text, setText] = getState("text", "");
 
     function onButtonClick(): void {
       setValue(value + 1);
+    }
+
+    function onInputChange(ev: AnyNullableType): void {
+      console.log(ev.target.value);
+      setText(ev.target.value);
     }
 
     return (
@@ -20,14 +26,21 @@ export class ExampleScript extends ExecutableScript {
         <div class="row">
           <div class="">
             Email
-            <input class="card w-100" type="email" placeholder="opensource@mail.com" />
+            <input
+              class="card w-100"
+              type="email"
+              placeholder="opensource@mail.com"
+              onchange={onInputChange}
+              onkeyup={onInputChange}
+              value={text}
+            />
           </div>
           <div class="">
             Additional Info
             <select class="card w-100">
-              <option value="Option 1">Question</option>
-              <option value="Option 2">Compliment</option>
-              <option value="Option 3">Problem</option>
+              <option value="Option1">Question</option>
+              <option value="Option2">Compliment</option>
+              <option value="Option3">Problem</option>
             </select>
           </div>
         </div>
