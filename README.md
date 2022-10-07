@@ -44,4 +44,4 @@ Note: `npm` can be used intead of `yarn`
 ### Known issues
 - SCSS sometimes does not build correctly on `dist/index.user.js`;
 - SCSS `@use rules must be written before any other rules` problem;
-- Circular dependency
+- Circular dependency warning
