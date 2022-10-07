@@ -35,7 +35,7 @@ Note: `npm` can be used intead of `yarn`
 - [X] Create an UI lib
 - [X] State support
 - [X] Persistent state support
-- [X] More persistent state implementations
+- [ ] More persistent state implementations
 - [ ] Clean dist files. Example: since type files are note used for UserScripts, no need for them
 - [ ] Better project configuration (for typescript, eslint, etc)
 
