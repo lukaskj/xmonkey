@@ -1,5 +1,5 @@
 import { ExecutableScript } from "./executable-script";
-import { ClassType } from "./state/types";
+import { ClassType } from "./types";
 import { renderComponent } from "./ui/render-component";
 
 export class XMonkeyScript {

@@ -1,4 +1,4 @@
-import { ClassType } from "../types";
+import { ClassType } from "../../types";
 import { AbstractPersistentState } from "./abstract-persistent-state";
 
 const states = new Map<ClassType<AbstractPersistentState>, AbstractPersistentState>();

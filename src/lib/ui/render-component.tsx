@@ -1,7 +1,7 @@
 import { batch, render } from "million";
 import { ExecutableScript } from "../executable-script";
 import { xMonkeyWrapperElement } from "../ui/xmonkey-wrapper-element";
-import { XMonkeyComponent } from "../xmonkey-component";
+import { XMonkeyComponent } from "./xmonkey-component";
 
 const queueRender = batch();
 export function renderComponent(executableScript: ExecutableScript): void {
