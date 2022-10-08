@@ -1,5 +1,4 @@
 import { ExecutableScript } from "../executable-script";
-import { renderComponent } from "../ui/render-component";
 import { XMonkeyScript } from "../xmonkey-script";
 import { GlobalState } from "./global-state";
 import { PersistentStateFactory } from "./persistent/persistent-state-factory";
@@ -20,7 +19,7 @@ export function getState<T>(key: string, initialValue: T | null = null): GetStat
       state[key] = v;
       const persistentState = PersistentStateFactory.getInstance(script.persistenceMethod);
       persistentState.save(state); // without await to not lock on every setState, just persist on storage
-      renderComponent(script);
+
       return v;
     },
   ];
