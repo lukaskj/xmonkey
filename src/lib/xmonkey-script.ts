@@ -2,7 +2,6 @@ import { ExecutableScript } from "./executable-script";
 import { GlobalState } from "./state/global-state";
 import { PersistentStateFactory } from "./state/persistent/persistent-state-factory";
 import { ClassType } from "./types";
-import { renderComponent } from "./ui/render-component";
 
 export class XMonkeyScript {
   public static userScript: ExecutableScript | null = null;
@@ -28,6 +27,5 @@ export class XMonkeyScript {
     GlobalState.loadState(globalState);
 
     await scriptObject.execute();
-    renderComponent(scriptObject);
   }
 }

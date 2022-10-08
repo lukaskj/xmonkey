@@ -1,8 +1,8 @@
-import { ExampleScript } from "./example-script/example";
+import { ExampleScriptNoUI } from "./example-script-no-ui/example-script-no-ui";
 import { XMonkeyScript } from "./lib/xmonkey-script";
 
 async function main(): Promise<void> {
-  return await XMonkeyScript.run(ExampleScript);
+  return await XMonkeyScript.run(ExampleScriptNoUI);
 }
 
 main();
