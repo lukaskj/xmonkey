@@ -3,10 +3,14 @@ import { ExecutableScript } from "../lib/executable-script";
 import { getState } from "../lib/state";
 import { Example2Component } from "./example2";
 
-import "./example.scss";
 import { AnyNullableType } from "../lib/types";
+import "./example.scss";
 
 export class ExampleScript extends ExecutableScript {
+  public override async execute(): Promise<void> {
+    console.log("Executing script");
+  }
+
   public override render(): VNode | undefined {
     const [value, setValue] = getState("value", 0);
     const [text, setText] = getState("text", "");

@@ -1,4 +1,4 @@
-import { DOMNode, VNode } from "million";
+import { VNode } from "million";
 
 export class ExecutableScript {
   public title = "User Script";
@@ -8,7 +8,7 @@ export class ExecutableScript {
     throw new Error("Not implemented.");
   }
 
-  public async execute(): Promise<DOMNode | null> {
-    return null;
+  public async execute(): Promise<void> {
+    return;
   }
 }
