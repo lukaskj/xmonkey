@@ -7,6 +7,8 @@ import { AnyNullableType } from "../lib/types";
 import "./example.scss";
 
 export class ExampleScript extends ExecutableScript {
+  public override title = "Example component";
+
   public override async execute(): Promise<void> {
     console.log("Executing script");
   }
