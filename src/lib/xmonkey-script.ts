@@ -27,6 +27,8 @@ export class XMonkeyScript {
     const globalState = persistentState.load();
     GlobalState.loadState(globalState);
 
+    console.log(`[+] Running XMonkey Script: ${scriptObject.title}`);
+
     await scriptObject.execute();
     renderComponent(scriptObject);
   }
