@@ -11,15 +11,15 @@ export function getState<T>(key: string, initialValue: T | null = null): GetStat
     state[key] = initialValue;
   }
 
-  const script = XMonkeyScript.userScript as ExecutableScript;
-
   return [
     state[key],
     (v: T): T => {
       state[key] = v;
-      const persistentState = PersistentStateFactory.getInstance(script.persistenceMethod);
-      persistentState.save(state); // without await to not lock on every setState, just persist on storage
-
+      const script = XMonkeyScript.userScript as ExecutableScript;
+      if (script && script.hasExecuted()) {
+        const persistentState = PersistentStateFactory.getInstance(script.persistenceMethod);
+        persistentState.save(state); // without await to not lock on every setState, just persist on storage
+      }
       return v;
     },
   ];
