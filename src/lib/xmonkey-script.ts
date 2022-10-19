@@ -30,6 +30,7 @@ export class XMonkeyScript {
     console.log(`[+] Running XMonkey Script: ${scriptObject.title}`);
 
     await scriptObject.execute();
+    scriptObject.setExecuted();
     renderComponent(scriptObject);
   }
 }
