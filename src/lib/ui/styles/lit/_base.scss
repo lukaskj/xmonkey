@@ -39,12 +39,14 @@ $input-padding: 3px;
   }
 
   .card:focus,
+  .xcard:focus,
   hr {
     outline: 0;
     border: solid colors.$primary;
   }
 
   .card,
+  .xcard,
   pre {
     padding: $input-padding;
     border: solid colors.$white;
