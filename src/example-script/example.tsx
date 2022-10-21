@@ -6,6 +6,10 @@ import { Example2Component } from "./example2";
 import { AnyNullableType } from "../lib/types";
 import "./example.scss";
 
+interface ExampleState {
+  value: number;
+  text: string;
+}
 export class ExampleScript extends ExecutableScript {
   public override title = "Example component";
 
@@ -14,21 +18,19 @@ export class ExampleScript extends ExecutableScript {
   }
 
   public override render(): VNode | undefined {
-    const [value, setValue] = getState("value", 0);
-    const [text, setText] = getState("text", "");
+    const state = getState<ExampleState>();
 
     function onButtonClick(): void {
-      setValue(value + 1);
+      state.value++;
     }
 
     function onInputChange(ev: AnyNullableType): void {
-      console.log(ev.target.value);
-      setText(ev.target.value);
+      state.text = ev.target.value;
     }
 
     return (
       <div className="example-script-wrapper d--f fd--c ai--c jc--c">
-        <Example2Component value={value} />
+        <Example2Component value={state.value} />
         <div class="row">
           <div class="">
             Email
@@ -38,7 +40,7 @@ export class ExampleScript extends ExecutableScript {
               placeholder="opensource@mail.com"
               onchange={onInputChange}
               onkeyup={onInputChange}
-              value={text}
+              value={state.text}
             />
           </div>
           <div class="">
