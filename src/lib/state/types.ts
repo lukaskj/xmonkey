@@ -1,4 +1,4 @@
-import { AnyNullableType } from "../types";
+import { AnyObject } from "../types";
 
-export type State = { [k: string]: AnyNullableType };
+export type State = AnyObject;
 export type GetState<T> = [T, (v: T) => T];

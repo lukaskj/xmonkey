@@ -1,3 +1,3 @@
-import { getState } from "./get-state";
+import { getState, loadState } from "./global-state";
 
-export { getState };
+export { getState, loadState };

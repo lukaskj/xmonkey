@@ -5,6 +5,7 @@ export type AnyType = any;
 export type AnyNullableType = AnyType | null | undefined;
 export type ClassType<T> = new () => T;
 export type FunctionType<T> = () => T;
+export type AnyObject = { [key: string | symbol]: AnyNullableType };
 
 export enum ScriptState {
   STARTED,

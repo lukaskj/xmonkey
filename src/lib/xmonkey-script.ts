@@ -1,6 +1,5 @@
 import { ExecutableScript } from "./executable-script";
-import { GlobalState } from "./state/global-state";
-import { PersistentStateFactory } from "./state/persistent/persistent-state-factory";
+import { loadState } from "./state";
 import { ClassType } from "./types";
 import { renderComponent } from "./ui/render-component";
 
@@ -23,9 +22,7 @@ export class XMonkeyScript {
 
     XMonkeyScript.userScript = scriptObject;
 
-    const persistentState = PersistentStateFactory.getInstance(scriptObject.persistenceMethod);
-    const globalState = persistentState.load();
-    GlobalState.loadState(globalState);
+    loadState();
 
     console.log(`[+] Running XMonkey Script: ${scriptObject.title}`);
 
