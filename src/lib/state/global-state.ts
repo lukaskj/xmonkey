@@ -20,7 +20,6 @@ const proxyHandler = {
     return true;
   },
   get: (target: State, key: string | symbol): AnyType => {
-    console.log("PROXY GET", { target, key });
     if (key === isProxy) {
       return true;
     }
