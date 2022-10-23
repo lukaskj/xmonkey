@@ -16,7 +16,7 @@ const proxyHandler = {
     target[key] = newValue;
     if (script) {
       const persistentState = PersistentStateFactory.getInstance(script.persistenceMethod);
-      persistentState.save(target); // without await to not lock on every setState, just persist on storage
+      persistentState.save(globalState); // without await to not lock on every setState, just persist on storage
       if (script.hasExecuted()) {
         renderComponent(script);
       }
