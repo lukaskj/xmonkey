@@ -7,22 +7,41 @@ import { State } from "./types";
 
 const stateObj: State = {};
 
-const state = new Proxy(stateObj, {
+const isProxy = Symbol("isProxy");
+
+const proxyHandler = {
   set(target: State, key: string | symbol, newValue: AnyType): boolean {
     const script = XMonkeyScript.userScript as ExecutableScript;
+
     target[key] = newValue;
-    if (script && script.hasExecuted()) {
+    if (script) {
       const persistentState = PersistentStateFactory.getInstance(script.persistenceMethod);
       persistentState.save(target); // without await to not lock on every setState, just persist on storage
       renderComponent(script);
     }
     return true;
   },
-  get: (target: State, key): AnyType => target[key as string],
-});
+  get: (target: State, key: string | symbol): AnyType => {
+    if (key === isProxy) {
+      return true;
+    }
+    const prop = target[key];
+    if (typeof prop === "undefined") {
+      return;
+    }
+
+    if (!prop[isProxy] && typeof prop === "object") {
+      target[key] = new Proxy(prop, proxyHandler);
+    }
+
+    return target[key];
+  },
+};
+
+const globalState = new Proxy(stateObj, proxyHandler);
 
 function getState<T>(): T {
-  return state as T;
+  return globalState as T;
 }
 
 const loadState = (): void => {
@@ -30,7 +49,7 @@ const loadState = (): void => {
   const persistentState = PersistentStateFactory.getInstance(script.persistenceMethod);
   const loadedState = persistentState.load();
   for (const key in loadedState) {
-    state[key] = loadedState[key];
+    globalState[key] = loadedState[key];
   }
 };
 
