@@ -17,7 +17,9 @@ const proxyHandler = {
     if (script) {
       const persistentState = PersistentStateFactory.getInstance(script.persistenceMethod);
       persistentState.save(target); // without await to not lock on every setState, just persist on storage
-      renderComponent(script);
+      if (script.hasExecuted()) {
+        renderComponent(script);
+      }
     }
     return true;
   },
