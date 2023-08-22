@@ -21,14 +21,12 @@
     "test:cov": "jest --coverage --config ./jest.config.js",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand  --config ./jest.config.js"
   },
-  "dependencies": {
-    "@rollup/plugin-terser": "^0.4.3"
-  },
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
     "@rollup/plugin-commonjs": "^25.0.4",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.2.1",
+    "@rollup/plugin-terser": "^0.4.3",
     "@rollup/plugin-typescript": "^11.1.2",
     "@types/jest": "^29.5.4",
     "@types/node": "^20.5.3",
