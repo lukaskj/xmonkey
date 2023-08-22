@@ -3,10 +3,10 @@ import json from "@rollup/plugin-json";
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 import scss from "rollup-plugin-scss";
-import { terser } from "rollup-plugin-terser";
-import { xMonkeyBuildHeaders } from "./plugins/x-monkey-build-headers";
-import { xMonkeyFixMillionFunctionalComponents } from "./plugins/x-monkey-fix-million-functional-components";
-import { minifyCSS, xMonkeyImportCss } from "./plugins/x-monkey-import-css";
+import terser from "@rollup/plugin-terser";
+import { xMonkeyBuildHeaders } from "./plugins/x-monkey-build-headers.js";
+import { xMonkeyFixMillionFunctionalComponents } from "./plugins/x-monkey-fix-million-functional-components.js";
+import { minifyCSS, xMonkeyImportCss } from "./plugins/x-monkey-import-css.js";
 
 export default {
   input: "src/index.ts",
