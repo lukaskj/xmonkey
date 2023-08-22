@@ -1,9 +1,20 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { join } from "path";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
+
+function fileDirName(meta) {
+  const __filename = fileURLToPath(meta.url);
+
+  const __dirname = dirname(__filename);
+
+  return { __dirname, __filename };
+}
 
 export async function xMonkeyBuildHeaders() {
-  const scriptConfig = require(join(__dirname, "../script-config.js")).headers;
+  const { __dirname } = fileDirName(import.meta);
+  const importScriptConfig = await import("file://" + join(__dirname, "../../script-config.cjs"));
+  const scriptConfig = importScriptConfig.headers;
   const tag = "// ==UserScript==";
   const tagEnd = "// ==/UserScript==";
   let headersArr = [];

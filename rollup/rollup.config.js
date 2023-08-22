@@ -2,8 +2,8 @@ import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
-import { terser } from "rollup-plugin-terser";
-import { xMonkeyBuildHeaders } from "./plugins/x-monkey-build-headers";
+import terser from "@rollup/plugin-terser";
+import { xMonkeyBuildHeaders } from "./plugins/x-monkey-build-headers.js";
 
 export default {
   input: "src/index.ts",
