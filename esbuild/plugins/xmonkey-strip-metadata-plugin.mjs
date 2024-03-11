@@ -7,7 +7,7 @@ export function xMonkeyStripMetadataPlugin() {
       let foundMetadata = false;
       let metadataContent = "";
 
-      build.onLoad({ filter: /\.ts.$/, namespace: "file" }, async (args) => {
+      build.onLoad({ filter: /.(ts|tsx)/, namespace: "file" }, async (args) => {
         if (foundMetadata) return;
         const source = await readFile(args.path, "utf8");
         const scriptMetadataIndex = source.indexOf("@ScriptMetadata(");
