@@ -1,35 +1,34 @@
-import { VNode, VProps } from "million";
-import { getState } from "../state";
+import { ComponentChildren } from "preact";
+import { useState } from "preact/hooks";
 
-interface XMonkeyComponentState {
-  minimized: boolean;
-}
+type VProps = {
+  title: string;
+  children?: ComponentChildren;
+};
 
-export function XMonkeyComponent(props: VProps): VNode {
-  const state = getState<XMonkeyComponentState>();
+export function XMonkeyComponent(props: VProps) {
+  const [minimized, setMinimized] = useState(false);
+
+  function toggleMinimize() {
+    setMinimized(!minimized);
+  }
 
   return (
     <div className="xmwr_c d--f fd--c ai--c jc--sb">
       <div className="xmwr-h w-100 m0 d--f jc--c bg-primary noselect">
         <div className="xmwr-title m0">{props.title}</div>
-        <MinimizeButton />
+        <MinimizeButton toggleMinimize={toggleMinimize} minimized={minimized} />
       </div>
-      <div className={`xmwr-b` + (state.minimized ? " b-collapsed" : "")}>{props.children}</div>
+      <div className={`xmwr-b w-100` + (minimized ? "b-collapsed" : "")}>{props.children}</div>
     </div>
   );
 }
 
-function MinimizeButton(): VNode {
-  const state = getState<XMonkeyComponentState>();
-
-  function minimizeComponent(): void {
-    state.minimized = !state.minimized;
-  }
-
-  const minimizeChar = state.minimized ? "+" : "-";
+function MinimizeButton({ minimized, toggleMinimize }: { minimized: boolean; toggleMinimize: CallableFunction }) {
+  const minimizeChar = minimized ? "+" : "-";
 
   return (
-    <div className="xmwr-x m0" onclick={minimizeComponent}>
+    <div className="xmwr-x m0" onClick={() => toggleMinimize()}>
       {minimizeChar}
     </div>
   );

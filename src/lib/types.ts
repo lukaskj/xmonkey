@@ -1,13 +1,20 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-export type Instantiable<T> = { new (...args: any[]): T };
+/**
+Documentation links:
+- https://violentmonkey.github.io/api/metadata-block/
+- https://www.tampermonkey.net/documentation.php
+- https://wiki.greasespot.net/Metadata_Block
+*/
+export type ScriptInfo = {
+  "@name": string;
+  "@namespace": string;
+  "@match": string;
+  "@version": string;
+  "@author": string;
+  "@description": string;
+  "@grant"?: string[];
+  [k: string]: unknown;
+};
 
-export type AnyType = any;
-export type AnyNullableType = AnyType | null | undefined;
-export type ClassType<T> = new () => T;
-export type FunctionType<T> = () => T;
-export type AnyObject = { [key: string | symbol]: AnyNullableType };
-
-export enum ScriptState {
-  STARTED,
-  FINISHED_EXECUTING,
+export function ScriptMetadata(_metadata: ScriptInfo) {
+  return function (_target: unknown) {};
 }
