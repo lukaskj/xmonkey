@@ -15,7 +15,6 @@
     "noEmit": true,
     "noEmitOnError": true,
     "incremental": false,
-    "skipLibCheck": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
     "strictBindCallApply": false,
@@ -27,6 +26,8 @@
     "esModuleInterop": true,
     "strictPropertyInitialization": false,
     "resolveJsonModule": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
     "baseUrl": ".",
     "paths": {
       "$lib/*": ["./src/lib/*"]

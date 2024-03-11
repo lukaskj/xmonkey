@@ -7,7 +7,7 @@ export function xMonkeyStripMetadataPlugin() {
       let foundMetadata = false;
       let metadataContent = "";
 
-      build.onLoad({ filter: /\.ts$/, namespace: "file" }, async (args) => {
+      build.onLoad({ filter: /\.ts.$/, namespace: "file" }, async (args) => {
         if (foundMetadata) return;
         const source = await readFile(args.path, "utf8");
         const scriptMetadataIndex = source.indexOf("@ScriptMetadata(");
@@ -20,8 +20,11 @@ export function xMonkeyStripMetadataPlugin() {
         if (metadataDecoratorMatcher) {
           metadataContent = metadataDecoratorMatcher.at(0);
           const contents = source.replace(regex, "");
+          const extension = args.path.split(".").pop();
 
-          return { contents, loader: "ts" };
+          const loader = extension === "tsx" ? "tsx" : "ts";
+
+          return { contents, loader };
         }
       });
 

@@ -1,8 +1,8 @@
 import { XmonkeyApp } from "$lib/xmonkey-app";
-import { ExampleConsoleScript } from "src/example-scripts/example-console-script";
+import { ExampleUiScript as Script } from "./example-scripts/example-ui-script";
 
 async function main() {
-  await XmonkeyApp.run(ExampleConsoleScript);
+  await XmonkeyApp.run(Script);
 }
 
 main();
