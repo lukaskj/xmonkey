@@ -1,20 +1,20 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "million",
     "outDir": "./dist",
     "module": "CommonJS",
-    "target": "es2017",
-    "lib": ["es6", "DOM"],
+    "target": "es5",
+    "lib": ["ES6", "DOM", "DOM.Iterable", "ESNext"],
+    "moduleResolution": "node",
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "alwaysStrict": true,
-    "sourceMap": true,
-    "incremental": true,
-    "skipLibCheck": true,
+    "strict": true,
+    "alwaysStrict": false,
+    "noEmit": true,
+    "noEmitOnError": true,
+    "incremental": false,
     "strictNullChecks": true,
     "noImplicitAny": true,
     "strictBindCallApply": false,
@@ -24,10 +24,17 @@
     "noUnusedParameters": true /* Report errors on unused parameters. */,
     "noImplicitReturns": true /* Report error when not all code paths in function return a value. */,
     "esModuleInterop": true,
+    "strictPropertyInitialization": false,
     "resolveJsonModule": true,
-    "strictPropertyInitialization": true,
-    "noImplicitOverride": true,
+    "allowArbitraryExtensions": true,
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "baseUrl": ".",
+    "paths": {
+      "$lib/*": ["./src/lib/*"]
+    }
   },
-  "include": ["src", "test"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "dist/*"]
 }
