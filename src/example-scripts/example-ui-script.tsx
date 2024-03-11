@@ -7,7 +7,7 @@ import "./example-scss.scss";
 @ScriptMetadata({
   "@name": "Example Ui Script",
   "@namespace": "ui-scripts",
-  "@match": "https://stackoverflow.com/*",
+  "@match": "https://www.google.com/",
   "@version": "1.0",
   "@author": "-",
   "@description": "Example Ui Script Description",
@@ -22,14 +22,20 @@ export class ExampleUiScript extends UiScript {
 function JsxUiExample() {
   const [count, setCount] = useState(0);
   const increment = () => setCount(count + 1);
-  // You can also pass a callback to the setter
+
   const decrement = () => setCount((currentCount) => currentCount - 1);
 
   return (
-    <div>
+    <>
       <p>Count: {count}</p>
-      <button onClick={increment}>Increment</button>
-      <button onClick={decrement}>Decrement</button>
-    </div>
+      <div class="row w-100 d--f jc--c">
+        <button class="btn small primary" onClick={increment}>
+          Increment
+        </button>
+        <button class="btn small primary" onClick={decrement}>
+          Decrement
+        </button>
+      </div>
+    </>
   );
 }
