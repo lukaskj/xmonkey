@@ -2,6 +2,7 @@ import { ScriptMetadata } from "$lib/types";
 import { UiScript } from "$lib/ui/ui-script";
 import { ComponentChild } from "preact";
 import { useState } from "preact/hooks";
+import "./example-scss.scss";
 
 @ScriptMetadata({
   "@name": "Example Ui Script",

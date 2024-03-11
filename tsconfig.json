@@ -26,6 +26,8 @@
     "esModuleInterop": true,
     "strictPropertyInitialization": false,
     "resolveJsonModule": true,
+    "allowArbitraryExtensions": true,
+    "allowJs": true,
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
     "baseUrl": ".",

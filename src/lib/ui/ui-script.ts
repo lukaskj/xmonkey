@@ -2,6 +2,8 @@ import { ExecutableScript } from "$lib/executable-script";
 import { xMonkeyWrapperElement } from "$lib/ui/xmonkey-wrapper-element";
 import { ComponentChild, render } from "preact";
 
+import "./styles/base.scss";
+
 /**
  * Script that renders an overlay
  */

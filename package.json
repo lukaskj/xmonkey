@@ -12,7 +12,7 @@
     "build:debug": "DEBUG=1 node esbuild/build.mjs",
     "start": "tsx --watch ./src/index.ts",
     "format": "prettier --write src/",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.{ts,tsx}\" --fix",
     "test": "jest --config ./jest.config.js --maxWorkers=1",
     "test:watch": "npm run test -- --watch",
     "test:cov": "npm run test -- --coverage",
@@ -20,6 +20,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "esbuild-sass-plugin": "^3.1.0",
     "preact": "^10.19.6"
   },
   "devDependencies": {
@@ -59,7 +60,6 @@
     "!**/test/**"
   ],
   "lint-staged": {
-    "*.ts": "eslint --fix",
-    "*.js": "eslint --fix"
+    "*.{js,mjs,ts,tsx,jsx}": "eslint --fix"
   }
 }
