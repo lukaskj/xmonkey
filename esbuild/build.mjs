@@ -6,7 +6,9 @@ import { xMonkeyStylesPlugin } from "./plugins/xmonkey-styles-plugin.mjs";
 let entryFile = process.argv[2];
 
 if (!entryFile) {
-  entryFile = "src/index.ts";
+  console.error(`No entryfile specified. Try adding the script to build in the argument.`);
+  console.error(`Example: npm run build src/example-script.ts`);
+  process.exit(1);
 }
 console.info(`Building file: '${entryFile}'`);
 
