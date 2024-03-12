@@ -15,7 +15,7 @@ await esbuild.build({
   outfile: "dist/index.js",
   bundle: true,
   treeShaking: true,
-  minify: process.env.DEBUG ? true : true,
+  minify: process.env.DEBUG ? false : true,
   platform: "browser",
   format: "iife",
   // target: "esnext",
