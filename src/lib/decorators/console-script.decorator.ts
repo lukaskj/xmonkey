@@ -1,6 +1,5 @@
-import { ClassConstructor } from "../../types";
 import { IConsoleScript } from "../interfaces";
-import { ScriptInfo } from "../types";
+import { ClassConstructor, ScriptInfo } from "../types";
 
 export function ConsoleScript<T extends IConsoleScript>(_metadata: ScriptInfo) {
   return function (target: ClassConstructor<T>) {

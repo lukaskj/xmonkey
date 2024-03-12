@@ -13,6 +13,7 @@ import "./example-scss.scss";
   "@grant": ["GM.addStyle"],
 })
 export class ExampleUiScript implements IUiScript {
+  title: string = "Example UI Script";
   public render() {
     return <JsxUiExample />;
   }

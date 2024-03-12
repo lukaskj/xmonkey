@@ -14,7 +14,7 @@
     "dev": "nodemon",
     "start": "tsx --watch ./src/index.ts",
     "format": "prettier --write src/",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.{ts,tsx}\" --fix",
+    "lint": "tsc --noEmit && eslint \"{src,apps,libs,test}/**/*.{ts,tsx}\" --fix",
     "test": "jest --config ./jest.config.js --maxWorkers=1",
     "test:watch": "npm run test -- --watch",
     "test:cov": "npm run test -- --coverage",
@@ -45,7 +45,7 @@
     "rimraf": "^5.0.5",
     "ts-jest": "^29.1.2",
     "tsx": "^4.7.1",
-    "typescript": "^5.4.2"
+    "typescript": "^5.3.0"
   },
   "engines": {
     "node": ">=16"
