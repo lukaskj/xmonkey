@@ -19,14 +19,19 @@ export function xMonkeyStripMetadataPlugin() {
         const metadataDecoratorMatcher = source.match(regex);
         if (metadataDecoratorMatcher) {
           metadataContent = metadataDecoratorMatcher.at(0);
-          //console.log("metadataContent", metadataContent);
+          // console.log("metadataContent", metadataContent);
+          const startJsonMetadataIndex = metadataContent.indexOf("{");
+          const endJsonMetadataIndex = metadataContent.lastIndexOf("}");
+          const metadataJsonString = metadataContent.substring(startJsonMetadataIndex, endJsonMetadataIndex + 1);
+          const contents = source.replace(metadataJsonString, ""); // remove the json metadata from source
           // const contents = source.replace(regex, ""); // remove @ConsoleScript({....}) from source
+
           // const contents = source.replace(regex, "");
-          // const extension = args.path.split(".").pop();
+          const extension = args.path.split(".").pop();
 
-          // const loader = extension === "tsx" ? "tsx" : "ts";
+          const loader = extension === "tsx" ? "tsx" : "ts";
 
-          // return { contents, loader };
+          return { contents, loader };
         }
       });
 
