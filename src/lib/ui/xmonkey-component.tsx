@@ -19,7 +19,7 @@ export function XMonkeyComponent(props: VProps) {
         <div className="xmwr-title m0">{props.title}</div>
         <MinimizeButton toggleMinimize={toggleMinimize} minimized={minimized} />
       </div>
-      <div className={`xmwr-b w-100` + (minimized ? "b-collapsed" : "")}>{props.children}</div>
+      <div className={`xmwr-b w-100 ` + (minimized ? "b-collapsed" : "")}>{props.children}</div>
     </div>
   );
 }

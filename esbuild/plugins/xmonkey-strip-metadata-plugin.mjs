@@ -10,21 +10,23 @@ export function xMonkeyStripMetadataPlugin() {
       build.onLoad({ filter: /.(ts|tsx)/, namespace: "file" }, async (args) => {
         if (foundMetadata) return;
         const source = await readFile(args.path, "utf8");
-        const scriptMetadataIndex = source.indexOf("@ScriptMetadata(");
+        const scriptMetadataIndex = source.match(/@(ConsoleScript|UiScript)\(/).index;
 
-        if (scriptMetadataIndex < 0) return;
+        if (!scriptMetadataIndex || scriptMetadataIndex < 0) return;
         foundMetadata = true;
         // eslint-disable-next-line no-useless-escape
-        const regex = /\@ScriptMetadata\([^\)]*\)(\.[^\)]*\))?/gi;
+        const regex = /\@(ConsoleScript|UiScript)\([^\)]*\)(\.[^\)]*\))?/gi;
         const metadataDecoratorMatcher = source.match(regex);
         if (metadataDecoratorMatcher) {
           metadataContent = metadataDecoratorMatcher.at(0);
-          const contents = source.replace(regex, "");
-          const extension = args.path.split(".").pop();
+          //console.log("metadataContent", metadataContent);
+          // const contents = source.replace(regex, ""); // remove @ConsoleScript({....}) from source
+          // const contents = source.replace(regex, "");
+          // const extension = args.path.split(".").pop();
 
-          const loader = extension === "tsx" ? "tsx" : "ts";
+          // const loader = extension === "tsx" ? "tsx" : "ts";
 
-          return { contents, loader };
+          // return { contents, loader };
         }
       });
 

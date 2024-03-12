@@ -1,20 +1,19 @@
-import { ScriptMetadata } from "$lib/types";
-import { UiScript } from "$lib/ui/ui-script";
-import { ComponentChild } from "preact";
+import { UiScript } from "$lib/decorators/ui-script.decorator";
+import { IUiScript } from "$lib/interfaces";
 import { useState } from "preact/hooks";
 import "./example-scss.scss";
 
-@ScriptMetadata({
-  "@name": "Example Ui Script",
-  "@namespace": "ui-scripts",
-  "@match": "https://www.google.com/",
+@UiScript({
+  "@name": "Example Console Script",
+  "@namespace": "console-scripts",
+  "@match": "https://en.wikipedia.org/*",
   "@version": "1.0",
   "@author": "-",
-  "@description": "Example Ui Script Description",
+  "@description": "Example Console Script Description",
   "@grant": ["GM.addStyle"],
 })
-export class ExampleUiScript extends UiScript {
-  public render(): ComponentChild {
+export class ExampleUiScript implements IUiScript {
+  public render() {
     return <JsxUiExample />;
   }
 }
