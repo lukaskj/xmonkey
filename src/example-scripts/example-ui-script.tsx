@@ -28,7 +28,7 @@ function JsxUiExample() {
   return (
     <>
       <p>Count: {count}</p>
-      <div class="row w-100 d--f jc--c">
+      <div class="w-100 d--f jc--c">
         <button class="btn small primary" onClick={increment}>
           Increment
         </button>
