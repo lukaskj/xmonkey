@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@lukaskj/xmonkey':
+    specifier: ^2.0.2
+    version: 2.0.2(sass-embedded@1.71.1)
   esbuild:
     specifier: ^0.20.1
     version: 0.20.1
@@ -1155,6 +1158,20 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
+
+  /@lukaskj/xmonkey@2.0.2(sass-embedded@1.71.1):
+    resolution: {integrity: sha512-VawqLlip4GZWHBz0nMIzZqHe1zev1WBBdCZTC+T6HNsThRpA4tcsM2Tj1ehYwUKVzPoRvLsvRdcUOv5w6keMMg==}
+    engines: {node: '>=20'}
+    hasBin: true
+    dependencies:
+      esbuild: 0.20.1
+      esbuild-sass-plugin: 3.1.0(esbuild@0.20.1)(sass-embedded@1.71.1)
+      postcss: 8.4.35
+      postcss-modules: 6.0.0(postcss@8.4.35)
+      preact: 10.19.6
+    transitivePeerDependencies:
+      - sass-embedded
+    dev: false
 
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}

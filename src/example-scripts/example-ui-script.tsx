@@ -1,7 +1,6 @@
-import { UiScript } from "../decorators/ui-script.decorator.js";
-import { IUiScript } from "../interfaces/ui-script.interface.js";
+import { IUiScript, UiScript } from "@lukaskj/xmonkey";
+import "@lukaskj/xmonkey/styles/base.scss";
 import { useState } from "preact/hooks";
-import "./example-scss.scss";
 
 @UiScript({
   "@name": "Example Console Script",

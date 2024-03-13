@@ -1,6 +1,6 @@
 {
   "name": "@lukaskj/xmonkey",
-  "version": "2.0.2",
+  "version": "2.0.4",
   "author": "lukaskj",
   "license": "ISC",
   "scripts": {
@@ -8,9 +8,10 @@
     "prebuild": "pnpm run clean",
     "prepublish": "pnpm run build",
     "build:old": "node esbuild/build.mjs",
-    "build": "pnpm build:esm && pnpm copy-styles",
+    "build": "pnpm build:esm && pnpm build:bin && pnpm copy-styles",
     "build:esm": "tsc -p tsconfig.build.json",
     "build:cjs": "tsc -p tsconfig.build.json --module CommonJS --outDir dist/cjs",
+    "build:bin": "esbuild src/build.ts --platform=node --format=cjs --packages=external --bundle --sourcemap=inline --outfile=dist/build.js",
     "build:prod": "pnpm run lint && pnpm run build",
     "build:dev": "DEBUG=1 node esbuild/build.mjs",
     "build:debug": "DEBUG=1 node esbuild/build.mjs",
@@ -69,7 +70,8 @@
     "*.{js,mjs,ts,tsx,jsx}": "eslint --fix"
   },
   "exports": {
-    ".": "./dist/**/*",
+    ".": "./dist/index.js",
+    "./styles/*": "./dist/styles/*",
     "./decorators": "./dist/decorators/*",
     "./interfaces": "./dist/interfaces/*"
   },
