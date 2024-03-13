@@ -6,7 +6,7 @@ type VProps = {
   children?: ComponentChildren;
 };
 
-export function XMonkeyComponent(props: VProps) {
+export function XMonkeyWindowComponent(props: VProps) {
   const [minimized, setMinimized] = useState(false);
 
   function toggleMinimize() {

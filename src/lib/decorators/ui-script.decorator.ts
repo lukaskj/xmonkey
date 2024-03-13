@@ -1,8 +1,7 @@
 import { h, render } from "preact";
 import { IUiScript } from "../interfaces";
 import { ClassConstructor, ScriptInfo } from "../types";
-import { XMonkeyComponent } from "../ui/xmonkey-component";
-import { xMonkeyWrapperElement } from "../ui/xmonkey-wrapper-element";
+import { XMonkeyWindowComponent } from "../ui/x-monkey-window-component";
 
 import "../ui/styles/base.scss";
 
@@ -11,6 +10,18 @@ export function UiScript<T extends IUiScript>(_metadata: ScriptInfo) {
     const scriptObject = new _target();
 
     const rootComponent = xMonkeyWrapperElement();
-    render(h(XMonkeyComponent, { title: scriptObject.title ?? "" }, scriptObject.render()), rootComponent!);
+    render(h(XMonkeyWindowComponent, { title: scriptObject.title ?? "" }, scriptObject.render()), rootComponent!);
   };
+}
+
+function xMonkeyWrapperElement(): HTMLElement {
+  const ID = "__xmwr";
+  let div = document.getElementById(ID);
+  if (div) return div;
+
+  div = document.createElement("div");
+  div.id = ID;
+  document.body.appendChild(div);
+
+  return div;
 }

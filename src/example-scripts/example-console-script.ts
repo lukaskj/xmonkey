@@ -5,7 +5,7 @@ import { IConsoleScript } from "../lib/interfaces";
 @ConsoleScript({
   "@name": "Example Console Script",
   "@namespace": "console-scripts",
-  "@match": "https://*.google.com*/*",
+  "@match": "https://en.wikipedia.org/*",
   "@version": "1.0",
   "@author": "-",
   "@description": "Example Console Script Description",
