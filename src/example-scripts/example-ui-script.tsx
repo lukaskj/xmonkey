@@ -1,6 +1,7 @@
-import { IUiScript, UiScript } from "@lukaskj/xmonkey";
-import "@lukaskj/xmonkey/styles/base.scss";
 import { useState } from "preact/hooks";
+import { UiScript } from "../decorators/ui-script.decorator";
+import { IUiScript } from "../interfaces/ui-script.interface";
+import "../styles/_base.scss";
 
 @UiScript({
   "@name": "Example Console Script",
@@ -12,7 +13,7 @@ import { useState } from "preact/hooks";
   "@grant": ["GM.addStyle"],
 })
 export class ExampleUiScript implements IUiScript {
-  title: string = "Example UI Script";
+  title: string = "Example UI Script ss";
   public render() {
     return <JsxUiExample />;
   }
@@ -27,7 +28,7 @@ function JsxUiExample() {
   return (
     <>
       <p>Count: {count}</p>
-      <div class="w-100 d--f jc--c">
+      <div class="w-100 d-f jc-c">
         <button class="btn small primary" onClick={increment}>
           Increment
         </button>

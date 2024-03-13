@@ -1,7 +1,8 @@
 // import { ConsoleScript } from "../decorators/console-script.decorator.js";
 // import { IConsoleScript } from "../interfaces/console-script.interface.js";
+import { ConsoleScript } from "../decorators/console-script.decorator.js";
+import { IConsoleScript } from "../interfaces/console-script.interface.js";
 import { sleep } from "../utils/sleep.js";
-import { ConsoleScript, IConsoleScript } from "@lukaskj/xmonkey";
 
 @ConsoleScript({
   "@name": "Example Console Script",

@@ -14,12 +14,12 @@ export function XMonkeyWindowComponent(props: VProps) {
   }
 
   return (
-    <div className="xmwr_c d--f fd--c ai--c jc--sb">
-      <div className="xmwr-h w-100 m0 d--f fd--r jc--c bg-primary noselect">
+    <div className="xmwr_c d-f fd-c ai-c jc-sb">
+      <div className="xmwr-h w-100 m0 d-f fd-r jc-c bg-primary noselect">
         <div className="xmwr-title m0">{props.title}</div>
         <MinimizeButton toggleMinimize={toggleMinimize} minimized={minimized} />
       </div>
-      <div className={`xmwr-b w-100 d--f jc--c ` + (minimized ? "b-collapsed" : "")}>{props.children}</div>
+      <div className={`xmwr-b w-100 d-f jc-c ` + (minimized ? "b-collapsed" : "")}>{props.children}</div>
     </div>
   );
 }
