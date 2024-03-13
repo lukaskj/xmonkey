@@ -1,5 +1,5 @@
-import { UiScript } from "$lib/decorators/ui-script.decorator";
-import { IUiScript } from "$lib/interfaces";
+import { UiScript } from "../decorators/ui-script.decorator.js";
+import { IUiScript } from "../interfaces/ui-script.interface.js";
 import { useState } from "preact/hooks";
 import "./example-scss.scss";
 

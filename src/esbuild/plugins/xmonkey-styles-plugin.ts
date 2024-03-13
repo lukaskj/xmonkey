@@ -1,6 +1,7 @@
+import { Plugin } from "esbuild";
 import { appendFile, readFile } from "fs/promises";
 
-export function xMonkeyStylesPlugin() {
+export function xMonkeyStylesPlugin(): Plugin {
   return {
     name: "xmonkey-styles-plugin",
     setup(build) {

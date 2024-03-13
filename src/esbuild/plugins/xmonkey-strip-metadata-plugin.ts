@@ -1,6 +1,7 @@
+import { Plugin } from "esbuild";
 import { readFile, writeFile } from "fs/promises";
 
-export function xMonkeyStripMetadataPlugin() {
+export function xMonkeyStripMetadataPlugin(): Plugin {
   return {
     name: "xmonkey-strip-metadata-plugin",
     setup(build) {
@@ -10,7 +11,7 @@ export function xMonkeyStripMetadataPlugin() {
       build.onLoad({ filter: /.(ts|tsx)/, namespace: "file" }, async (args) => {
         if (foundMetadata) return;
         const source = await readFile(args.path, "utf8");
-        const scriptMetadataIndex = source.match(/@(ConsoleScript|UiScript)\(/).index;
+        const scriptMetadataIndex = source.match(/@(ConsoleScript|UiScript)\(/)?.index;
 
         if (!scriptMetadataIndex || scriptMetadataIndex < 0) return;
         foundMetadata = true;
@@ -18,7 +19,7 @@ export function xMonkeyStripMetadataPlugin() {
         const regex = /\@(ConsoleScript|UiScript)\([^\)]*\)(\.[^\)]*\))?/gi;
         const metadataDecoratorMatcher = source.match(regex);
         if (metadataDecoratorMatcher) {
-          metadataContent = metadataDecoratorMatcher.at(0);
+          metadataContent = metadataDecoratorMatcher.at(0) as string;
           // console.log("metadataContent", metadataContent);
           const startJsonMetadataIndex = metadataContent.indexOf("{");
           const endJsonMetadataIndex = metadataContent.lastIndexOf("}");
@@ -33,6 +34,8 @@ export function xMonkeyStripMetadataPlugin() {
 
           return { contents, loader };
         }
+
+        return;
       });
 
       build.onEnd(async (result) => {
@@ -59,7 +62,7 @@ export function xMonkeyStripMetadataPlugin() {
   };
 }
 
-function getScriptMetadataString(scriptMetadataFunctionCallString) {
+function getScriptMetadataString(scriptMetadataFunctionCallString: string) {
   scriptMetadataFunctionCallString = scriptMetadataFunctionCallString.trim();
   const startJsonMetadataIndex = scriptMetadataFunctionCallString.indexOf("{");
   const endJsonMetadataIndex = scriptMetadataFunctionCallString.lastIndexOf("}");
@@ -76,12 +79,12 @@ function getScriptMetadataString(scriptMetadataFunctionCallString) {
 
   const tag = "// ==UserScript==";
   const tagEnd = "// ==/UserScript==";
-  let headersArr = [];
+  const headersArr = [];
 
   const spaces = 13;
   for (const key in metadataObject) {
     if (Array.isArray(metadataObject[key])) {
-      metadataObject[key].forEach((item) => {
+      metadataObject[key].forEach((item: unknown) => {
         headersArr.push(`${key.padEnd(spaces, " ")}${item}`);
       });
     } else {

@@ -1,6 +1,6 @@
-import { sleep } from "$lib/utils/sleep";
-import { ConsoleScript } from "../lib/decorators/console-script.decorator";
-import { IConsoleScript } from "../lib/interfaces";
+import { ConsoleScript } from "../decorators/console-script.decorator.js";
+import { IConsoleScript } from "../interfaces/console-script.interface.js";
+import { sleep } from "../utils/sleep.js";
 
 @ConsoleScript({
   "@name": "Example Console Script",

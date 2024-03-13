@@ -1,28 +1,35 @@
 {
-  "name": "@lukaskj/xmonkey-typescript-lib",
-  "version": "2.0",
-  "main": "index.js",
+  "name": "@lukaskj/xmonkey",
+  "version": "2.0.2",
   "author": "lukaskj",
   "license": "ISC",
   "scripts": {
     "clean": "rimraf dist coverage .rollup.cache",
-    "prebuild": "npm run clean",
-    "build": "node esbuild/build.mjs",
-    "build:prod": "npm run lint && npm run build",
+    "prebuild": "pnpm run clean",
+    "prepublish": "pnpm run build",
+    "build:old": "node esbuild/build.mjs",
+    "build": "pnpm build:esm && pnpm copy-styles",
+    "build:esm": "tsc -p tsconfig.build.json",
+    "build:cjs": "tsc -p tsconfig.build.json --module CommonJS --outDir dist/cjs",
+    "build:prod": "pnpm run lint && pnpm run build",
     "build:dev": "DEBUG=1 node esbuild/build.mjs",
     "build:debug": "DEBUG=1 node esbuild/build.mjs",
+    "copy-styles": "cp -R src/styles/ dist/styles",
     "dev": "nodemon",
     "start": "tsx --watch ./src/index.ts",
     "format": "prettier --write src/",
     "lint": "tsc --noEmit && eslint \"{src,apps,libs,test}/**/*.{ts,tsx}\" --fix",
     "test": "jest --config ./jest.config.js --maxWorkers=1",
-    "test:watch": "npm run test -- --watch",
-    "test:cov": "npm run test -- --coverage",
+    "test:watch": "pnpm run test -- --watch",
+    "test:cov": "pnpm run test -- --coverage",
     "test:debug": "-- node --inspect=0.0.0.0:5001 -r ts-node/register node_modules/jest/bin/jest.js --runInBand  --config ./jest.config.js",
     "prepare": "husky"
   },
   "dependencies": {
+    "esbuild": "^0.20.1",
     "esbuild-sass-plugin": "^3.1.0",
+    "postcss": "^8.4.35",
+    "postcss-modules": "^6.0.0",
     "preact": "^10.19.6"
   },
   "devDependencies": {
@@ -31,7 +38,6 @@
     "@types/node": "^20.11.25",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
-    "esbuild": "^0.20.1",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
@@ -44,25 +50,38 @@
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
     "ts-jest": "^29.1.2",
+    "tslib": "^2.6.2",
     "tsx": "^4.7.1",
     "typescript": "^5.3.0"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=20"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lukaskj/typescript-base.git"
+    "url": "git+https://github.com/lukaskj/xmonkey.git"
   },
   "bugs": {
-    "url": "https://github.com/lukaskj/typescript-base/issues"
+    "url": "https://github.com/lukaskj/xmonkey/issues"
   },
-  "homepage": "https://github.com/lukaskj/typescript-base#readme",
-  "files": [
-    "dist/**/*",
-    "!**/test/**"
-  ],
+  "homepage": "https://github.com/lukaskj/xmonkey#readme",
   "lint-staged": {
     "*.{js,mjs,ts,tsx,jsx}": "eslint --fix"
+  },
+  "exports": {
+    ".": "./dist/**/*",
+    "./decorators": "./dist/decorators/*",
+    "./interfaces": "./dist/interfaces/*"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.js",
+  "files": [
+    "dist",
+    "!**/test/**",
+    "!node_modules"
+  ],
+  "bin": {
+    "xmonkey": "dist/build.js"
   }
 }
