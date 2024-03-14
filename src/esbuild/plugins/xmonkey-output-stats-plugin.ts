@@ -1,5 +1,3 @@
-// statSync("./dist/index.js").size / 1024
-
 import { Plugin } from "esbuild";
 
 export function xMonkeyOutputStatsPlugin(): Plugin {
