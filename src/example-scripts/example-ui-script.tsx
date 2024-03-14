@@ -1,6 +1,6 @@
 import { useState } from "preact/hooks";
-import { UiScript } from "../decorators/ui-script.decorator";
-import { IUiScript } from "../interfaces/ui-script.interface";
+import { UiScript } from "../ui-script/ui-script.decorator";
+import { IUiScript } from "../ui-script/ui-script.interface";
 import "../styles/_base.scss";
 
 @UiScript({

@@ -1,5 +1,5 @@
-import { IConsoleScript } from "../interfaces/console-script.interface.js";
-import { ClassConstructor, ScriptInfo } from "../types";
+import { IConsoleScript } from "./console-script.interface.js";
+import { ClassConstructor, ScriptInfo } from "../types.js";
 
 export function ConsoleScript<T extends IConsoleScript>(_metadata: ScriptInfo) {
   return function (target: ClassConstructor<T>) {

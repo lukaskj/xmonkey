@@ -1,6 +1,6 @@
 {
   "name": "@lukaskj/xmonkey",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "author": "lukaskj",
   "license": "ISC",
   "scripts": {
@@ -71,9 +71,15 @@
   },
   "exports": {
     ".": "./dist/index.js",
-    "./styles/*": "./dist/styles/*",
-    "./decorators": "./dist/decorators/*",
-    "./interfaces": "./dist/interfaces/*"
+    "./styles": "./dist/styles/_base.scss",
+    "./console-script": {
+      "types": "./dist/console-script/index.d.ts",
+      "import": "./dist/console-script/index.js"
+    },
+    "./ui-script": {
+      "types": "./dist/ui-script/index.d.ts",
+      "import": "./dist/ui-script/index.js"
+    }
   },
   "main": "dist/index.js",
   "module": "dist/index.js",

@@ -1,4 +1,4 @@
-export * from "./decorators/console-script.decorator.js";
-export * from "./decorators/ui-script.decorator.js";
-export * from "./interfaces/console-script.interface.js";
-export * from "./interfaces/ui-script.interface.js";
+// export * from "./console-script/console-script.decorator.js";
+// export * from "./ui-script/ui-script.decorator.js";
+// export * from "./console-script/console-script.interface.js";
+// export * from "./ui-script/ui-script.interface.js";

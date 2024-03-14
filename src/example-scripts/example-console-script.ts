@@ -1,7 +1,7 @@
 // import { ConsoleScript } from "../decorators/console-script.decorator.js";
 // import { IConsoleScript } from "../interfaces/console-script.interface.js";
-import { ConsoleScript } from "../decorators/console-script.decorator.js";
-import { IConsoleScript } from "../interfaces/console-script.interface.js";
+import { ConsoleScript } from "../console-script/console-script.decorator.js";
+import { IConsoleScript } from "../console-script/console-script.interface.js";
 import { sleep } from "../utils/sleep.js";
 
 @ConsoleScript({

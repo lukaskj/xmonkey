@@ -29,3 +29,6 @@ export type AnyObject = { [key: string]: any };
 export type AnyType = string | number | boolean | AnyObject;
 
 export type WithRequired<T, K extends keyof T> = T & { [P in K]-?: T[P] };
+export type Complete<T> = {
+  [P in keyof Required<T>]: Pick<T, P> extends Required<Pick<T, P>> ? T[P] : T[P] | undefined;
+};
