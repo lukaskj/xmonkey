@@ -2,6 +2,7 @@ import * as esbuild from "esbuild";
 import { sassPlugin } from "esbuild-sass-plugin";
 import { xMonkeyStripMetadataPlugin } from "./plugins/xmonkey-strip-metadata-plugin.js";
 import { xMonkeyStylesPlugin } from "./plugins/xmonkey-styles-plugin.js";
+import { xMonkeyOutputStatsPlugin } from "./plugins/xmonkey-output-stats-plugin.js";
 
 export async function buildXmonkeyScript(scriptBasePath: string) {
   // let entryFile = process.argv[2];
@@ -26,6 +27,7 @@ export async function buildXmonkeyScript(scriptBasePath: string) {
       // xMonkeyDevPlugin(),
       sassPlugin({ style: "compressed" }),
       xMonkeyStylesPlugin(),
+      xMonkeyOutputStatsPlugin(),
     ],
   });
 }
