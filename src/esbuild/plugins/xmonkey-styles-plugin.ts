@@ -26,7 +26,7 @@ export function xMonkeyStylesPlugin(): Plugin {
         }
 
         if (!cssFilePath.length) {
-          console.warn("CSS output not generated. Style bundle skipped.");
+          console.warn("[-] StyleSheet output skipped.");
           return;
         }
 
