@@ -2,7 +2,7 @@
 @use "colors";
 
 ##{vars.$xmonkey-wrapper} {
-  width: 200px;
+  min-width: 200px;
   position: absolute;
   top: 10px;
   left: 10px;
