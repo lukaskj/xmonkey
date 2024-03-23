@@ -4,16 +4,16 @@ import { IUiScript } from "../ui-script/ui-script.interface";
 import "../styles/_base.scss";
 
 @UiScript({
-  "@name": "Example Console Script",
-  "@namespace": "console-scripts",
+  "@name": "Example Ui Script",
+  "@namespace": "ui-scripts",
   "@match": "https://en.wikipedia.org/*",
   "@version": "1.0",
   "@author": "-",
-  "@description": "Example Console Script Description",
+  "@description": "Example Ui Script Description",
   "@grant": ["GM.addStyle"],
 })
 export class ExampleUiScript implements IUiScript {
-  title: string = "Example UI Script ss";
+  title: string = "Example UI Script";
   public render() {
     return <JsxUiExample />;
   }
@@ -30,7 +30,7 @@ function JsxUiExample() {
       <p>Count: {count}</p>
       <div class="w-100 d-f jc-c">
         <button class="btn small primary" onClick={increment}>
-          Increment 2
+          Increment
         </button>
         <button class="btn small primary" onClick={decrement}>
           Decrement

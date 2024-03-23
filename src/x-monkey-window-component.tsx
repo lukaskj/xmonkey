@@ -1,5 +1,7 @@
 import { ComponentChildren } from "preact";
-import { useState } from "preact/hooks";
+import { useSessionStorage } from "./hooks";
+import { useMemo } from "preact/hooks";
+import { getStorageKeyIdFromString } from "./utils/get-storage-key-id-from-string";
 
 type VProps = {
   title: string;
@@ -7,7 +9,8 @@ type VProps = {
 };
 
 export function XMonkeyWindowComponent(props: VProps) {
-  const [minimized, setMinimized] = useState(false);
+  const storageKey = useMemo(() => getStorageKeyIdFromString(props.title), [props.title]);
+  const [minimized, setMinimized] = useSessionStorage(storageKey, false);
 
   function toggleMinimize() {
     setMinimized(!minimized);
@@ -19,7 +22,7 @@ export function XMonkeyWindowComponent(props: VProps) {
         <div className="xmwr-title m0">{props.title}</div>
         <MinimizeButton toggleMinimize={toggleMinimize} minimized={minimized} />
       </div>
-      <div className={`xmwr-b w-100 d-f jc-c ` + (minimized ? "b-collapsed" : "")}>{props.children}</div>
+      <div className="xmwr-b w-100 d-f jc-c">{props.children}</div>
     </div>
   );
 }
