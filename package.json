@@ -1,6 +1,6 @@
 {
   "name": "@lukaskj/xmonkey",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "author": "lukaskj",
   "license": "ISC",
   "scripts": {
@@ -79,6 +79,10 @@
     "./ui-script": {
       "types": "./dist/ui-script/index.d.ts",
       "import": "./dist/ui-script/index.js"
+    },
+    "./hooks": {
+      "types": "./dist/hooks/index.d.ts",
+      "import": "./dist/hooks/index.js"
     }
   },
   "main": "dist/index.js",
