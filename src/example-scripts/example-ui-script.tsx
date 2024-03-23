@@ -30,7 +30,7 @@ function JsxUiExample() {
       <p>Count: {count}</p>
       <div class="w-100 d-f jc-c">
         <button class="btn small primary" onClick={increment}>
-          Increment
+          Increment 2
         </button>
         <button class="btn small primary" onClick={decrement}>
           Decrement

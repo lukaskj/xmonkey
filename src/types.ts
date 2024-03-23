@@ -10,7 +10,7 @@ Documentation links:
 export type ScriptInfo = {
   "@name": string;
   "@namespace": string;
-  "@match": string;
+  "@match": string | string[];
   "@version": string;
   "@author": string;
   "@description": string;
