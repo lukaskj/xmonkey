@@ -1,0 +1,18 @@
+{
+  "name": "@lukaskj/xmonkey-examples",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "xmonkey"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@lukaskj/xmonkey": "^2.2.1",
+    "typescript": "^5.4.3"
+  },
+  "dependencies": {
+    "preact": "^10.19.7"
+  }
+}
