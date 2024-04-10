@@ -87,6 +87,9 @@ export default class WhatsAppExample implements IUiScript {
 }
 ```
 
+[whatsapp-example.webm](https://github.com/lukaskj/xmonkey/assets/1936255/c6ea50d7-e3a8-4770-8af8-068aa6481a11)
+
+
 ## Building
 
 To build the class to an working userscript, run the `xmonkey` binary with the script as argument.
