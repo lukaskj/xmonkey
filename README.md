@@ -9,6 +9,13 @@ With XMonkey there are two ways of creating userscripts:
 
 Project with both examples [here](./examples/)
 
+## Install
+```bash
+npm i -D @lukaskj/xmonkey
+# or
+pnpm i -D @lukaskj/xmonkey
+```
+
 ## Console Scripts
 
 A "Console Script" is a simple script that will run in the background.<br>
