@@ -71,19 +71,12 @@ function getScriptMetadataString(scriptMetadataFunctionCallString: string) {
     return "";
   }
 
-  const aaaa = JSON5.parse(
-    scriptMetadataFunctionCallString.substring(startJsonMetadataIndex, endJsonMetadataIndex + 1),
+  const jsonMetadataString = scriptMetadataFunctionCallString.substring(
+    startJsonMetadataIndex,
+    endJsonMetadataIndex + 1,
   );
 
-  console.log("AAAAAAAA", aaaa);
-
-  // const jsonMetadataString = scriptMetadataFunctionCallString
-  //   .substring(startJsonMetadataIndex, endJsonMetadataIndex + 1)
-  //   .replaceAll("\n", "")
-  //   .replaceAll(/,\s{1,}\]/g, "]")
-  //   .replaceAll(/,\s{1,}\}/g, "}");
-
-  const metadataObject = aaaa;
+  const metadataObject = JSON5.parse(jsonMetadataString);
 
   const tag = "// ==UserScript==";
   const tagEnd = "// ==/UserScript==";
