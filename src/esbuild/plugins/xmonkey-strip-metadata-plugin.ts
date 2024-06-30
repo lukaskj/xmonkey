@@ -1,5 +1,6 @@
 import { Plugin } from "esbuild";
 import { readFile, writeFile } from "fs/promises";
+import JSON5 from "json5";
 
 export function xMonkeyStripMetadataPlugin(): Plugin {
   return {
@@ -70,13 +71,19 @@ function getScriptMetadataString(scriptMetadataFunctionCallString: string) {
     return "";
   }
 
-  const jsonMetadataString = scriptMetadataFunctionCallString
-    .substring(startJsonMetadataIndex, endJsonMetadataIndex + 1)
-    .replaceAll("\n", "")
-    .replaceAll(/,\s{1,}\]/g, "]")
-    .replaceAll(/,\s{1,}\}/g, "}");
+  const aaaa = JSON5.parse(
+    scriptMetadataFunctionCallString.substring(startJsonMetadataIndex, endJsonMetadataIndex + 1),
+  );
 
-  const metadataObject = JSON.parse(jsonMetadataString);
+  console.log("AAAAAAAA", aaaa);
+
+  // const jsonMetadataString = scriptMetadataFunctionCallString
+  //   .substring(startJsonMetadataIndex, endJsonMetadataIndex + 1)
+  //   .replaceAll("\n", "")
+  //   .replaceAll(/,\s{1,}\]/g, "]")
+  //   .replaceAll(/,\s{1,}\}/g, "}");
+
+  const metadataObject = aaaa;
 
   const tag = "// ==UserScript==";
   const tagEnd = "// ==/UserScript==";
