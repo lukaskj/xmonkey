@@ -112,4 +112,4 @@ xmonkey src/example-console-script.tsx
 
 ### Known bugs
 
-- The UiScript render function has a but that it cannot have any hook or it won't work. The workaround is to return a single component in the UiScript that this component can use any preact hook as usual. See example [here](./examples/src/whatsapp-theme/whatsapp-theme.tsx).
+- The UiScript render function has a bug that it cannot have any hook or it won't work. The workaround is to return a single component in the UiScript that this component can use any preact hook as usual. See example [here](./examples/src/whatsapp-theme/whatsapp-theme.tsx).
