@@ -46,7 +46,7 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=${NPM_CONFIG_TOKEN}" > ~/.npmrc
           npm version --no-git-tag-version ${{ steps.get_version.outputs.VERSION }}
-          pnpm publish --access public --ignore-scripts
+          pnpm publish --access public --ignore-scripts --no-git-checks
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
