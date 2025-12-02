@@ -3,42 +3,15 @@
   "version": "2.2.6",
   "author": "lukaskj",
   "license": "ISC",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.js",
-  "files": [
-    "dist",
-    "!**/test/**",
-    "!node_modules"
-  ],
-  "bin": {
-    "xmonkey": "dist/build.js"
-  },
-  "exports": {
-    ".": "./dist/index.js",
-    "./styles": "./dist/styles/_base.scss",
-    "./console-script": {
-      "types": "./dist/console-script/index.d.ts",
-      "import": "./dist/console-script/index.js"
-    },
-    "./ui-script": {
-      "types": "./dist/ui-script/index.d.ts",
-      "import": "./dist/ui-script/index.js"
-    },
-    "./hooks": {
-      "types": "./dist/hooks/index.d.ts",
-      "import": "./dist/hooks/index.js"
-    }
-  },
   "scripts": {
     "clean": "rimraf dist coverage .rollup.cache",
     "prebuild": "pnpm run clean",
     "prepublish": "pnpm run build",
     "build:old": "node esbuild/build.mjs",
     "build": "pnpm build:esm && pnpm build:bin && pnpm copy-styles",
-    "build:esm": "tsc -p tsconfig.build.json",
-    "build:cjs": "tsc -p tsconfig.build.json --module CommonJS --outDir dist/cjs",
-    "build:bin": "esbuild src/build.ts --platform=node --format=cjs --packages=external --bundle --sourcemap=inline --outfile=dist/build.js",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json --module CommonJS",
+    "build:bin": "esbuild src/build.ts --platform=node --format=esm --packages=external --bundle --sourcemap=inline --outfile=dist/build.js",
     "build:prod": "pnpm run lint && pnpm run build",
     "build:dev": "DEBUG=1 node esbuild/build.mjs",
     "build:debug": "DEBUG=1 node esbuild/build.mjs",
@@ -54,15 +27,15 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "esbuild": "^0.27.0",
-    "esbuild-sass-plugin": "^3.3.1",
+    "esbuild": "^0.20.1",
+    "esbuild-sass-plugin": "^3.1.0",
     "json5": "^2.2.3",
-    "postcss": "^8.5.6",
+    "postcss": "^8.4.35",
     "postcss-modules": "^6.0.0",
-    "preact": "^10.27.2"
+    "preact": "~10.27.2"
   },
   "peerDependencies": {
-    "preact": "^10.26.9"
+    "preact": "~10.27.2"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
@@ -75,13 +48,13 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jest": "^27.9.0",
     "eslint-plugin-prettier": "^5.1.3",
-    "husky": "^9.1.7",
+    "husky": "^9.0.11",
     "jest": "^29.7.0",
     "lint-staged": "^15.2.2",
     "nodemon": "^3.1.11",
     "prettier": "^3.6.2",
     "rimraf": "^6.1.2",
-    "ts-jest": "^29.4.5",
+    "ts-jest": "^29.1.2",
     "tslib": "^2.8.1",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3"
@@ -99,5 +72,31 @@
   "homepage": "https://github.com/lukaskj/xmonkey#readme",
   "lint-staged": {
     "*.{js,mjs,ts,tsx,jsx}": "eslint --fix"
+  },
+  "exports": {
+    ".": "./dist/esm/index.js",
+    "./styles": "./dist/styles/_base.scss",
+    "./console-script": {
+      "types": "./dist/esm/console-script/index.d.ts",
+      "default": "./dist/esm/console-script/index.js"
+    },
+    "./ui-script": {
+      "types": "./dist/esm/ui-script/index.d.ts",
+      "default": "./dist/esm/ui-script/index.js"
+    },
+    "./hooks": {
+      "types": "./dist/esm/hooks/index.d.ts",
+      "default": "./dist/esm/hooks/index.js"
+    }
+  },
+  "main": "dist/build.js",
+  "types": "dist/esm/index.d.ts",
+  "files": [
+    "dist",
+    "!**/test/**",
+    "!node_modules"
+  ],
+  "bin": {
+    "xmonkey": "dist/build.js"
   }
 }

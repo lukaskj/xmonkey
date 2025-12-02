@@ -1,6 +1,6 @@
 {
-  "watch": ["esbuild", "src", ".env"],
+  "watch": [".", "esbuild", "src", ".env"],
   "ext": "ts,js,tsx,mjs,json,scss,css",
-  "ignore": [".git", "node_modules"],
-  "exec": "tsx --watch ./src/build.ts"
+  "ignore": [".git", "node_modules", "dist/"],
+  "exec": "pnpm run build"
 }
