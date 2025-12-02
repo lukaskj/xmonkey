@@ -1,9 +1,12 @@
+@use "sass:color";
+
 $gray: #6c757d;
 $black: #2f2f2f;
 $white: #f0f0f0;
 
 $primary: #007bff;
-$secondary: darken($primary, 10%);
+$secondary: color.adjust($primary, $lightness: -10%);
+// $secondary: darken($primary, 10%);
 $warning: #ffc107;
 $error: #dc3545;
 $success: #28a745;
