@@ -33,7 +33,8 @@ export function xMonkeyStylesPlugin(): Plugin {
         const jsOutFile = build.initialOptions.outfile;
 
         const cssContents = (await readFile(cssFilePath)).toString();
-        appendFile(jsOutFile, `\nGM.addStyle("\\\n${cssContents.trim()}\\\n");`);
+        const cssContentsWithtoutNewlines = cssContents.replace(/\n/g, "").replace(/\r/g, "");
+        appendFile(jsOutFile, `\nGM.addStyle("\\\n${cssContentsWithtoutNewlines.trim()}\\\n");`);
       });
     },
   };
