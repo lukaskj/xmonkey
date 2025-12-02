@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist/esm",
+    "noEmit": false,
+    "declaration": true
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules",
+    "test",
+    "dist",
+    "src/example-scripts",
+    "**/*.spec.*",
+    "**/*.test.*",
+    "**/__mocks__/*",
+    "**/__tests__/*",
+    "**/*/__test__"
+  ]
+}

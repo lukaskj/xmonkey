@@ -3,9 +3,14 @@
     "outDir": "./dist",
     "module": "ES2022",
     "target": "ES2022",
-    "lib": ["ES6", "DOM", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "ES6",
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "moduleResolution": "node",
-    "declaration": true,
+    "declaration": false,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -14,7 +19,7 @@
     "alwaysStrict": false,
     "noEmit": true,
     "noEmitOnError": true,
-    "incremental": false,
+    "incremental": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
     "strictBindCallApply": false,
@@ -25,13 +30,35 @@
     "noImplicitReturns": true /* Report error when not all code paths in function return a value. */,
     "esModuleInterop": true,
     "strictPropertyInitialization": false,
-    "resolveJsonModule": true,
     "allowArbitraryExtensions": true,
     "allowJs": true,
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
-    "baseUrl": "."
+    "inlineSourceMap": true,
+    "paths": {
+      "$lib/*": [
+        "./src/lib/*"
+      ],
+      "react": [
+        "./node_modules/preact/compat/"
+      ],
+      "react-dom": [
+        "./node_modules/preact/compat/"
+      ]
+    }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "dist/*"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "test",
+    "dist",
+    "src/example-scripts",
+    "**/*.spec.*",
+    "**/*.test.*",
+    "**/__mocks__/*",
+    "**/__tests__/*",
+    "**/*/__test__"
+  ]
 }
