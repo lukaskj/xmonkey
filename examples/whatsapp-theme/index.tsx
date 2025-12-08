@@ -1,7 +1,8 @@
 import "@lukaskj/xmonkey/styles";
-import { IUiScript, UiScript } from "@lukaskj/xmonkey/ui-script";
 import "./styles.scss";
+
 import { useState } from "preact/hooks";
+import { type IUiScript, UiScript } from "../../src/ui-script";
 
 @UiScript({
   "@name": "WhatsApp Example",
