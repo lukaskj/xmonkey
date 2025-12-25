@@ -8,7 +8,17 @@ export function UiScript<T extends IUiScript>(_metadata: ScriptInfo) {
     const scriptObject = new _target();
 
     const rootComponent = xMonkeyWrapperElement();
-    render(h(XMonkeyWindowComponent, { title: scriptObject.title ?? "" }, scriptObject.render()), rootComponent!);
+    const renderedScript = scriptObject.render();
+    if (renderedScript instanceof Promise) {
+      return renderedScript.then((resolved) =>
+        render(h(XMonkeyWindowComponent, { title: scriptObject.title ?? "" }, resolved!), rootComponent!),
+      );
+    }
+
+    return render(
+      h(XMonkeyWindowComponent, { title: scriptObject.title ?? "" }, scriptObject.render()),
+      rootComponent!,
+    );
   };
 }
 
