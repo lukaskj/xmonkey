@@ -3,6 +3,7 @@
   "include": [
     "./scripts/**/*",
     "./src/**/*",
+    "examples",
     "./*.ts",
     "**/*.spec.*",
     "**/*.test.*",
