@@ -1,0 +1,9 @@
+#wp-theme-container {
+  padding: 5px;
+  button {
+    all: unset;
+  }
+  &> div > div {
+    margin-bottom: 2px;
+  }
+}

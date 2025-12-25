@@ -80,3 +80,13 @@
   .w-75 { width: 75% }
   .w-100 { width: 100% }
 }
+
+#__xmwp_highligh_dom_selector {
+  position: absolute;
+  background: rgba(153, 235, 255, 0.3);
+  border: 1px solid rgba(153, 235, 255, 0.8);
+  z-index: 90000;
+  pointer-events: none;
+  box-sizing: border-box;
+  transition: all 0.1s ease;
+}

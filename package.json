@@ -17,6 +17,7 @@
     "build:debug": "DEBUG=1 node esbuild/build.mjs",
     "copy-styles": "cp -R src/styles/ dist/styles",
     "dev": "nodemon",
+    "dev:examples": "tsx --watch-path src --watch-path examples src/build.ts",
     "start": "tsx ./src/build.ts",
     "format": "prettier --write src/",
     "lint": "tsc --noEmit && eslint \"{src,apps,libs,test}/**/*.{ts,tsx}\" --fix",
@@ -83,6 +84,10 @@
     "./ui-script": {
       "types": "./dist/esm/ui-script/index.d.ts",
       "default": "./dist/esm/ui-script/index.js"
+    },
+    "./utils": {
+      "types": "./dist/esm/utils/index.d.ts",
+      "default": "./dist/esm/utils/index.js"
     },
     "./hooks": {
       "types": "./dist/esm/hooks/index.d.ts",
