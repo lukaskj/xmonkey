@@ -10,15 +10,14 @@ export function UiScript<T extends IUiScript>(_metadata: ScriptInfo) {
     const rootComponent = xMonkeyWrapperElement();
     const renderedScript = scriptObject.render();
     if (renderedScript instanceof Promise) {
-      return renderedScript.then((resolved) =>
+      renderedScript.then((resolved) =>
         render(h(XMonkeyWindowComponent, { title: scriptObject.title ?? "" }, resolved!), rootComponent!),
       );
+
+      return;
     }
 
-    return render(
-      h(XMonkeyWindowComponent, { title: scriptObject.title ?? "" }, scriptObject.render()),
-      rootComponent!,
-    );
+    render(h(XMonkeyWindowComponent, { title: scriptObject.title ?? "" }, scriptObject.render()), rootComponent!);
   };
 }
 
