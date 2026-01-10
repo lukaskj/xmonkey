@@ -1,6 +1,23 @@
-# XMonkey TypeScript Lib
+<h1 align="center">
+  XMonkey TypeScript Lib
+</h1>
+<p align="center">
+  Tool for creating <a href="https://en.wikipedia.org/wiki/Userscript">userscripts</a> with TypeScript.
+</p>
 
-Tool for creating [userscripts](https://en.wikipedia.org/wiki/Userscript) with typescript.
+<p align="center">
+<a href="https://www.npmjs.com/package/@lukaskj/xmonkey">
+  <img src="https://img.shields.io/npm/v/@lukaskj/xmonkey" alt="NPM Version">
+</a>
+<a href="https://github.com/lukaskj/xmonkey/blob/main/LICENSE">
+  <img src="https://img.shields.io/npm/l/@lukaskj/xmonkey" alt="License">
+</a>
+<a href="https://nodejs.org">
+  <img src="https://img.shields.io/node/v/@lukaskj/xmonkey" alt="Node Version">
+</a>
+</p>
+
+---
 
 With XMonkey there are two ways of creating userscripts:
 
@@ -10,6 +27,7 @@ With XMonkey there are two ways of creating userscripts:
 Project with both examples [here](./examples/)
 
 ## Install
+
 ```bash
 npm i -D @lukaskj/xmonkey
 # or
@@ -95,7 +113,6 @@ export default class WhatsAppExample implements IUiScript {
 ```
 
 [whatsapp-example.webm](https://github.com/lukaskj/xmonkey/assets/1936255/c6ea50d7-e3a8-4770-8af8-068aa6481a11)
-
 
 ## Building
 
