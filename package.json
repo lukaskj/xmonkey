@@ -33,7 +33,7 @@
     "json5": "^2.2.3",
     "postcss": "^8.4.35",
     "postcss-modules": "^6.0.0",
-    "preact": "~10.27.2"
+    "preact": "~10.27.3"
   },
   "peerDependencies": {
     "preact": "~10.27.2"
