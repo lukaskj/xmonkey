@@ -1,6 +1,6 @@
 import { h, render } from "preact";
-import { IUiScript } from "./ui-script.interface.js";
-import { ClassConstructor, ScriptInfo } from "../types.js";
+import type { IUiScript } from "./ui-script.interface.js";
+import type { ClassConstructor, ScriptInfo } from "../types.js";
 import { XMonkeyWindowComponent } from "../x-monkey-window-component.js";
 
 export function UiScript<T extends IUiScript>(_metadata: ScriptInfo) {
@@ -17,7 +17,7 @@ export function UiScript<T extends IUiScript>(_metadata: ScriptInfo) {
       return;
     }
 
-    render(h(XMonkeyWindowComponent, { title: scriptObject.title ?? "" }, scriptObject.render()), rootComponent!);
+    render(h(XMonkeyWindowComponent, { title: scriptObject.title ?? "" }, renderedScript), rootComponent!);
   };
 }
 
