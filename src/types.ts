@@ -7,6 +7,9 @@ Documentation links:
 - https://www.tampermonkey.net/documentation.php
 - https://wiki.greasespot.net/Metadata_Block
 */
+
+type Grants = `GM.${keyof typeof GM}` | `GM_${keyof typeof GM}` | (string & {});
+
 export type ScriptInfo = {
   "@name": string;
   "@namespace": string;
@@ -14,7 +17,7 @@ export type ScriptInfo = {
   "@version": string;
   "@author": string;
   "@description": string;
-  "@grant"?: string[];
+  "@grant"?: Grants[];
   [k: string]: unknown;
 };
 

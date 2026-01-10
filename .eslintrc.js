@@ -22,6 +22,7 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": ["error", { vars: "all", argsIgnorePattern: "^_" }],
     "no-unused-vars": ["error", { vars: "all", argsIgnorePattern: "^_" }],
     "@typescript-eslint/explicit-module-boundary-types": "off",
+    "no-undef": "off",
   },
   overrides: [
     {
