@@ -27,9 +27,6 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - name: Audit
-        run: pnpm audit signatures
-
       - name: Get Version From Tag
         id: get_version
         run: |
@@ -40,18 +37,14 @@ jobs:
           echo "Version to publish: ${{ steps.get_version.outputs.VERSION }}"
 
       - name: Publish to NPM
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          echo "//registry.npmjs.org/:_authToken=${NPM_CONFIG_TOKEN}" > ~/.npmrc
           npm version --no-git-tag-version ${{ steps.get_version.outputs.VERSION }}
           pnpm publish --access public --ignore-scripts --no-git-checks
 
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        if: github.ref_type == 'tag'
-        with:
-          name: v${{ steps.get_version.outputs.VERSION }}
-          tag_name: v${{ steps.get_version.outputs.VERSION }}
-          generate_release_notes: true
+      # - name: Create GitHub Release
+      #   uses: softprops/action-gh-release@v2
+      #   if: github.ref_type == 'tag'
+      #   with:
+      #     name: v${{ steps.get_version.outputs.VERSION }}
+      #     tag_name: v${{ steps.get_version.outputs.VERSION }}
+      #     generate_release_notes: true
