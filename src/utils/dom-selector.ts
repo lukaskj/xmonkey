@@ -1,6 +1,7 @@
 export class DomSelector {
   private static instance: DomSelector;
   private isSelecting = false;
+  private readonly highlightId = "__xmwp_highligh_dom_selector";
 
   private constructor() {}
 
@@ -11,37 +12,45 @@ export class DomSelector {
     return DomSelector.instance;
   }
 
-  private getHighlightElement() {
-    const highlightId = "__xmwp_highligh_dom_selector";
+  private getExistingHighlightElement(): HTMLElement | null {
+    return document.getElementById(this.highlightId);
+  }
 
-    const existingElement = document.getElementById(highlightId);
+  private getHighlightElement() {
+    const existingElement = this.getExistingHighlightElement();
     if (existingElement) {
       return existingElement;
     }
 
     const highlightBox = document.createElement("div");
-    highlightBox.id = highlightId;
+    highlightBox.id = this.highlightId;
     document.body.appendChild(highlightBox);
 
     return highlightBox;
   }
 
   private cleanUp() {
-    document.body.removeChild(this.getHighlightElement());
+    this.getExistingHighlightElement()?.remove();
     this.isSelecting = false;
   }
 
   public selectElementWithMouse<T extends HTMLElement = HTMLElement>(): Promise<T> {
     if (this.isSelecting) {
-      return Promise.reject("Element selection is already in progress.");
+      return Promise.reject(new Error("Element selection is already in progress."));
     }
 
     this.isSelecting = true;
     const highlightElement = this.getHighlightElement();
 
-    return new Promise<T>((resolve) => {
+    return new Promise<T>((resolve, reject) => {
+      let settled = false;
+
       const mouseOverHandler = (event: MouseEvent) => {
-        const targetElement = event.target as T;
+        const targetElement = event.target;
+        if (!(targetElement instanceof HTMLElement) || targetElement === highlightElement) {
+          return;
+        }
+
         if (!targetElement || targetElement === highlightElement) {
           return;
         }
@@ -54,20 +63,32 @@ export class DomSelector {
       };
 
       const clickHandler = (event: MouseEvent) => {
+        const targetElement = event.target;
+        if (!(targetElement instanceof HTMLElement) || targetElement === highlightElement) {
+          return;
+        }
+
         event.preventDefault();
         event.stopPropagation();
 
         cleanup();
-        resolve(event.target as T);
+        settled = true;
+        resolve(targetElement as T);
       };
 
       const keyDownEvent = (event: KeyboardEvent) => {
         if (event.key === "Escape") {
           cleanup();
+          settled = true;
+          reject(new Error("Element selection cancelled."));
         }
       };
 
       const cleanup = () => {
+        if (settled) {
+          return;
+        }
+
         this.cleanUp();
         document.removeEventListener("mouseover", mouseOverHandler, true);
         document.removeEventListener("click", clickHandler, true);
