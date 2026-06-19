@@ -37,13 +37,9 @@ jobs:
           echo "Version to publish: ${{ steps.get_version.outputs.VERSION }}"
 
       - name: Publish to NPM
-        env:
-            NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-            PNPM_CONFIG_NPMRC_AUTH_FILE: .npmrc
         run: |
-          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
           npm version --allow-same-version --no-git-tag-version ${{ steps.get_version.outputs.VERSION }}
-          pnpm publish --access public --ignore-scripts --no-git-checks
+          npm publish --access public --ignore-scripts --no-git-checks
 
       # - name: Create GitHub Release
       #   uses: softprops/action-gh-release@v2
