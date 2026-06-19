@@ -26,6 +26,13 @@ export class DomSelector {
     highlightBox.id = this.highlightId;
     document.body.appendChild(highlightBox);
 
+    // highlightBox.style.border = "1px solid #A0C6E8";
+    highlightBox.style.background = "#A0C6E820";
+    highlightBox.style.zIndex = "999999";
+    highlightBox.style.position = "absolute";
+    highlightBox.style.userSelect = "none";
+    highlightBox.style.pointerEvents = "none";
+
     return highlightBox;
   }
 
