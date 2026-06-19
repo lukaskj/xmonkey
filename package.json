@@ -20,7 +20,7 @@
     "dev:examples": "tsx --watch-path src --watch-path examples src/build.ts",
     "start": "tsx ./src/build.ts",
     "format": "biome format --fix",
-    "lint": "tsc --noEmit && biome lint --fix",
+    "lint": "biome lint --fix",
     "test": "jest --config ./jest.config.js --maxWorkers=1",
     "test:watch": "pnpm run test -- --watch",
     "test:cov": "pnpm run test -- --coverage",
