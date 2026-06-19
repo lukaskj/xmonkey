@@ -14,10 +14,10 @@ jobs:
     name: Publish
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
         with:
           version: 10
 
@@ -39,9 +39,9 @@ jobs:
       - name: Publish to NPM
         env:
             NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-            NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
+            PNPM_CONFIG_NPMRC_AUTH_FILE: .npmrc
         run: |
-          echo "//registry.npmjs.org/:_authToken=${NPM_CONFIG_TOKEN}" > ~/.npmrc
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
           npm version --allow-same-version --no-git-tag-version ${{ steps.get_version.outputs.VERSION }}
           pnpm publish --access public --ignore-scripts --no-git-checks
 
