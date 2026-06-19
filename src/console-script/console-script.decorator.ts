@@ -1,5 +1,5 @@
-import { IConsoleScript } from "./console-script.interface.js";
-import { ClassConstructor, ScriptInfo } from "../types.js";
+import type { IConsoleScript } from "./console-script.interface.js";
+import type { ClassConstructor, ScriptInfo } from "../types.js";
 
 export function ConsoleScript<T extends IConsoleScript>(_metadata: ScriptInfo) {
   return function (target: ClassConstructor<T>) {
@@ -9,6 +9,8 @@ export function ConsoleScript<T extends IConsoleScript>(_metadata: ScriptInfo) {
 
     const scriptObject = new target();
 
-    scriptObject.execute();
+    void scriptObject.execute().catch((error) => {
+      console.error("Console script execution failed.", error);
+    });
   };
 }

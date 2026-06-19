@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/ban-types */
+/** biome-ignore-all lint/suspicious/noExplicitAny: ? */
+/** biome-ignore-all lint/complexity/noBannedTypes: ? */
 
 /**
 Documentation links:

@@ -1,6 +1,7 @@
-import { Plugin } from "esbuild";
-import { readFile, writeFile } from "fs/promises";
+import type { Plugin } from "esbuild";
+import { readFile, writeFile } from "node:fs/promises";
 import JSON5 from "json5";
+import { isNullOrUndefined } from "../../utils/is-null-or-undefined";
 
 export function xMonkeyStripMetadataPlugin(): Plugin {
   return {
@@ -14,9 +15,10 @@ export function xMonkeyStripMetadataPlugin(): Plugin {
         const source = await readFile(args.path, "utf8");
         const scriptMetadataIndex = source.match(/@(ConsoleScript|UiScript)\(/)?.index;
 
-        if (!scriptMetadataIndex || scriptMetadataIndex < 0) return;
+        if (isNullOrUndefined(scriptMetadataIndex) || scriptMetadataIndex < 0) return;
         foundMetadata = true;
-        // eslint-disable-next-line no-useless-escape
+
+        // biome-ignore lint/complexity/noUselessEscapeInRegex: .
         const regex = /\@(ConsoleScript|UiScript)\([^\)]*\)(\.[^\)]*\))?/gi;
         const metadataDecoratorMatcher = source.match(regex);
         if (metadataDecoratorMatcher) {
@@ -63,8 +65,8 @@ export function xMonkeyStripMetadataPlugin(): Plugin {
   };
 }
 
-function getScriptMetadataString(scriptMetadataFunctionCallString: string) {
-  scriptMetadataFunctionCallString = scriptMetadataFunctionCallString.trim();
+function getScriptMetadataString(_scriptMetadataFunctionCallString: string) {
+  const scriptMetadataFunctionCallString = _scriptMetadataFunctionCallString.trim();
   const startJsonMetadataIndex = scriptMetadataFunctionCallString.indexOf("{");
   const endJsonMetadataIndex = scriptMetadataFunctionCallString.lastIndexOf("}");
   if (startJsonMetadataIndex < 0 || endJsonMetadataIndex < 0) {

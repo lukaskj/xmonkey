@@ -9,4 +9,9 @@ if (!entryFile) {
   process.exit(1);
 }
 
-buildXmonkeyScript(entryFile);
+try {
+  await buildXmonkeyScript(entryFile);
+} catch (error) {
+  console.error(error);
+  process.exit(1);
+}

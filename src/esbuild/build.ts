@@ -13,7 +13,7 @@ export async function buildXmonkeyScript(scriptBasePath: string) {
     outfile: "dist/index.js",
     bundle: true,
     treeShaking: true,
-    minify: process.env.DEBUG ? false : true,
+    minify: !process.env.DEBUG,
     platform: "browser",
     format: "iife",
     sourcemap: process.env.DEBUG ? "inline" : false,

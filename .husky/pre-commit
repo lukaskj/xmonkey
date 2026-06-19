@@ -1,2 +1,3 @@
-npx lint-staged
-pnpm audit
+tsc --noEmit
+pnpm run lint --staged
+pnpm run format --staged

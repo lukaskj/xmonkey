@@ -1,5 +1,5 @@
-import { Plugin } from "esbuild";
-import { appendFile, readFile } from "fs/promises";
+import type { Plugin } from "esbuild";
+import { appendFile, readFile } from "node:fs/promises";
 
 export function xMonkeyStylesPlugin(): Plugin {
   return {
